@@ -11,11 +11,11 @@ import Moya
 import ObjectMapper
 
 /// Extension for processing Responses into Mappable objects through ObjectMapper
-extension ObservableType where E == Response {
+public extension ObservableType where E == Response {
 
   /// Maps data received from the signal into an object which implements the Mappable protocol.
   /// If the conversion fails, the signal errors.
-  func mapObjectMapper<T: Mappable>() -> Observable<T> {
+  public func mapObjectMapper<T: Mappable>() -> Observable<T> {
     return flatMap { response -> Observable<T> in
       return just(try response.mapObjectMapper())
     }
@@ -24,7 +24,7 @@ extension ObservableType where E == Response {
   /// Maps data received from the signal into an array of objects which implement the Mappable
   /// protocol.
   /// If the conversion fails, the signal errors.
-  func mapObjectMapper<T: Mappable>() -> Observable<[T]> {
+  public func mapObjectMapper<T: Mappable>() -> Observable<[T]> {
     return flatMap { response -> Observable<[T]> in
       return just(try response.mapObjectMapper())
     }
