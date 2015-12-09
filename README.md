@@ -33,7 +33,7 @@ struct Repository: Mappable {
 }
 ```
 
-## Without RxSwift
+## 1. Without RxSwift
 
 
 ```swift
@@ -65,7 +65,7 @@ GitHubProvider.request(.UserRepositories(username), completion: { result in
 
 ```
 
-## With RxSwift
+## 2. With RxSwift
 
 ```swift
 GitHubProvider.request(.UserRepositories(username)).mapObjectMapper()
