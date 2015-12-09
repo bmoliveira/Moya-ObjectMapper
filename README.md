@@ -1,10 +1,20 @@
-Moya+ObjectMapper
+Moya-ObjectMapper
 ============
 [![CocoaPods](https://img.shields.io/cocoapods/v/Moya-ObjectMapper.svg)](https://github.com/ivanbruel/Moya-ObjectMapper)
 
 [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper) bindings for
 [Moya](https://github.com/Moya/Moya) for easier JSON serialization.
 Includes [RxSwift](https://github.com/ReactiveX/RxSwift/) bindings as well.
+
+# Installation
+
+## Cocoapods
+
+`pod 'Moya-ObjectMapper', '~> 1.0'`
+
+And the subspec if you want to use the bindings over RxSwift.
+
+`pod 'Moya-ObjectMapper/RxSwift', '~> 1.0'`
 
 # Usage
 
