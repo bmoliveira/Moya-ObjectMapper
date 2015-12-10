@@ -92,6 +92,14 @@ GitHubProvider.request(.UserRepositories(username)).mapObjectMapper()
   }
 ```
 
+# Contributing
+
+Issues and pull requests are welcome!
+
+# Author
+
+Ivan Bruel [@ivanbruel](https://twitter.com/ivanbruel)
+
 # License
 
 Moya-ObjectMapper is released under an MIT license. See LICENSE for more information.
