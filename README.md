@@ -10,15 +10,15 @@ Includes [RxSwift](https://github.com/ReactiveX/RxSwift/) bindings as well.
 
 ## Cocoapods
 
-`pod 'Moya-ObjectMapper', '~> 1.0'`
+`pod 'Moya-ObjectMapper', '~> 1.1.1'`
 
 The subspec if you want to use the bindings over RxSwift.
 
-`pod 'Moya-ObjectMapper/RxSwift', '~> 1.0'`
+`pod 'Moya-ObjectMapper/RxSwift', '~> 1.1.1'`
 
 And the subspec if you want to use the bindings over ReactiveCocoa.
 
-`pod 'Moya-ObjectMapper/ReactiveCocoa', '~> 1.0'`
+`pod 'Moya-ObjectMapper/ReactiveCocoa', '~> 1.1.1'`
 
 # Usage
 
@@ -59,7 +59,7 @@ GitHubProvider.request(.UserRepositories(username), completion: { result in
     switch result {
     case let .Success(response):
         do {
-            if let repos: [Repository]? = try response.mapObjectMapper() {
+            if let repos = try response.mapArray(Repository) {
               self.respos = repos
             } else {
               success = false
@@ -82,9 +82,8 @@ GitHubProvider.request(.UserRepositories(username), completion: { result in
 ## 2. With RxSwift
 
 ```swift
-GitHubProvider.request(.UserRepositories(username)).mapObjectMapper()
-  .subscribe {
-    (event: Event<[Repository]>) -> Void in
+GitHubProvider.request(.UserRepositories(username)).mapArray(Repository)
+  .subscribe { event -> Void in
     switch event {
     case .Next(let repos):
       self.repos = repos
