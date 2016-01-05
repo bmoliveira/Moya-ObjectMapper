@@ -15,18 +15,18 @@ public extension ObservableType where E == Response {
 
   /// Maps data received from the signal into an object which implements the Mappable protocol.
   /// If the conversion fails, the signal errors.
-  public func mapObjectMapper<T: Mappable>(type: T.Type) -> Observable<T> {
+  public func mapObject<T: Mappable>(type: T.Type) -> Observable<T> {
     return flatMap { response -> Observable<T> in
-      return Observable.just(try response.mapObjectMapper())
+      return Observable.just(try response.mapObject())
     }
   }
 
   /// Maps data received from the signal into an array of objects which implement the Mappable
   /// protocol.
   /// If the conversion fails, the signal errors.
-  public func mapObjectMapper<T: Mappable>(type: T.Type) -> Observable<[T]> {
+  public func mapArray<T: Mappable>(type: T.Type) -> Observable<[T]> {
     return flatMap { response -> Observable<[T]> in
-      return Observable.just(try response.mapObjectMapper())
+      return Observable.just(try response.mapArray())
     }
   }
 }

@@ -7,18 +7,18 @@ extension SignalProducerType where Value == Moya.Response, Error == Moya.Error {
 
   /// Maps data received from the signal into an object which implements the Mappable protocol.
   /// If the conversion fails, the signal errors.
-  public func mapObjectMapper<T: Mappable>(type: T.Type) -> SignalProducer<T, Error> {
+  public func mapObject<T: Mappable>(type: T.Type) -> SignalProducer<T, Error> {
     return producer.flatMap(.Latest) { response -> SignalProducer<T, Error> in
-      return unwrapThrowable { try response.mapObjectMapper() }
+      return unwrapThrowable { try response.mapObject() }
     }
   }
 
   /// Maps data received from the signal into an array of objects which implement the Mappable
   /// protocol.
   /// If the conversion fails, the signal errors.
-  public func mapObjectMapper<T: Mappable>(type: T.Type) -> SignalProducer<[T], Error> {
+  public func mapArray<T: Mappable>(type: T.Type) -> SignalProducer<[T], Error> {
     return producer.flatMap(.Latest) { response -> SignalProducer<[T], Error> in
-      return unwrapThrowable { try response.mapObjectMapper() }
+      return unwrapThrowable { try response.mapArray() }
     }
   }
 }
