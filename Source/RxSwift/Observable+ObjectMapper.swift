@@ -17,7 +17,7 @@ public extension ObservableType where E == Response {
   /// If the conversion fails, the signal errors.
   public func mapObjectMapper<T: Mappable>(type: T.Type) -> Observable<T> {
     return flatMap { response -> Observable<T> in
-      return Observable.just(try response.mapObjectMapper(type))
+      return Observable.just(try response.mapObjectMapper())
     }
   }
 
@@ -26,7 +26,7 @@ public extension ObservableType where E == Response {
   /// If the conversion fails, the signal errors.
   public func mapObjectMapper<T: Mappable>(type: T.Type) -> Observable<[T]> {
     return flatMap { response -> Observable<[T]> in
-      return Observable.just(try response.mapObjectMapper(type))
+      return Observable.just(try response.mapObjectMapper())
     }
   }
 }
