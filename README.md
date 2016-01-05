@@ -12,9 +12,13 @@ Includes [RxSwift](https://github.com/ReactiveX/RxSwift/) bindings as well.
 
 `pod 'Moya-ObjectMapper', '~> 1.0'`
 
-And the subspec if you want to use the bindings over RxSwift.
+The subspec if you want to use the bindings over RxSwift.
 
 `pod 'Moya-ObjectMapper/RxSwift', '~> 1.0'`
+
+And the subspec if you want to use the bindings over ReactiveCocoa.
+
+`pod 'Moya-ObjectMapper/ReactiveCocoa', '~> 1.0'`
 
 # Usage
 
