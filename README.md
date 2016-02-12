@@ -8,7 +8,7 @@ Includes [RxSwift](https://github.com/ReactiveX/RxSwift/) bindings as well.
 
 # Installation
 
-## Cocoapods
+## CocoaPods
 
 `pod 'Moya-ObjectMapper', '~> 1.1.2'`
 
