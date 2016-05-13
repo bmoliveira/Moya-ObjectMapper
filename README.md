@@ -10,15 +10,21 @@ Includes [RxSwift](https://github.com/ReactiveX/RxSwift/) bindings as well.
 
 ## CocoaPods
 
-`pod 'Moya-ObjectMapper', '~> 1.1.6'`
+```ruby
+pod 'Moya-ObjectMapper', '~> 1.2.1'
+```
 
 The subspec if you want to use the bindings over RxSwift.
 
-`pod 'Moya-ObjectMapper/RxSwift', '~> 1.1.6'`
+```ruby
+pod 'Moya-ObjectMapper/RxSwift', '~> 1.2.1'
+```
 
 And the subspec if you want to use the bindings over ReactiveCocoa.
 
-`pod 'Moya-ObjectMapper/ReactiveCocoa', '~> 1.1.6'`
+```ruby
+pod 'Moya-ObjectMapper/ReactiveCocoa', '~> 1.2.1'
+```
 
 # Usage
 
