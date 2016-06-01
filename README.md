@@ -66,7 +66,7 @@ GitHubProvider.request(.UserRepositories(username), completion: { result in
     case let .Success(response):
         do {
             if let repos = try response.mapArray(Repository) {
-              self.respos = repos
+              self.repos = repos
             } else {
               success = false
             }
