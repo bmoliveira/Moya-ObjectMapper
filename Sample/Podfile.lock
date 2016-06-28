@@ -1,0 +1,62 @@
+PODS:
+  - Alamofire (3.4.0)
+  - Moya (6.5.0):
+    - Moya/Core (= 6.5.0)
+  - Moya-ObjectMapper (1.2.1):
+    - Moya-ObjectMapper/Core (= 1.2.1)
+  - Moya-ObjectMapper/Core (1.2.1):
+    - Moya (~> 6.4)
+    - ObjectMapper (~> 1.2)
+  - Moya-ObjectMapper/ReactiveCocoa (1.2.1):
+    - Moya-ObjectMapper/Core
+    - Moya/ReactiveCocoa (~> 6.4)
+    - ReactiveCocoa (~> 4.1)
+  - Moya-ObjectMapper/RxSwift (1.2.1):
+    - Moya-ObjectMapper/Core
+    - Moya/RxSwift (~> 6.4)
+    - RxSwift (~> 2.4)
+  - Moya/Core (6.5.0):
+    - Alamofire (~> 3.0)
+    - Result (~> 2.0)
+  - Moya/ReactiveCocoa (6.5.0):
+    - Moya/Core
+    - ReactiveCocoa (~> 4.1)
+  - Moya/RxSwift (6.5.0):
+    - Moya/Core
+    - RxSwift (~> 2.0)
+  - ObjectMapper (1.3.0)
+  - ReactiveCocoa (4.1.0):
+    - ReactiveCocoa/UI (= 4.1.0)
+    - Result (~> 2.0)
+  - ReactiveCocoa/Core (4.1.0):
+    - ReactiveCocoa/no-arc
+    - Result (~> 2.0)
+  - ReactiveCocoa/no-arc (4.1.0):
+    - Result (~> 2.0)
+  - ReactiveCocoa/UI (4.1.0):
+    - ReactiveCocoa/Core
+    - Result (~> 2.0)
+  - Result (2.0.0)
+  - RxSwift (2.5.0)
+
+DEPENDENCIES:
+  - Moya-ObjectMapper (from `../`)
+  - Moya-ObjectMapper/ReactiveCocoa (from `../`)
+  - Moya-ObjectMapper/RxSwift (from `../`)
+
+EXTERNAL SOURCES:
+  Moya-ObjectMapper:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
+  Moya: f7a4044719381cc6299f9ad3e0ef05f426f0557b
+  Moya-ObjectMapper: 0adee6d1e81560ecd69da18f87260777fc439b34
+  ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471
+  ReactiveCocoa: d70004d7a366a7b8e87e60ce2347182c77701949
+  Result: 9e75e1111c774c6ac594e14907b15057053a7959
+  RxSwift: 402b41a50e922a0368fc14cb3bc9f4427920e8ae
+
+PODFILE CHECKSUM: 2d43147f401658ee8bc01887f4be3864a85d9e1c
+
+COCOAPODS: 1.0.1

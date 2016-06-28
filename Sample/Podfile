@@ -1,0 +1,22 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+use_frameworks!
+
+# Our Libraries
+def libraries
+  pod 'Moya-ObjectMapper', :path => "../"
+  pod 'Moya-ObjectMapper/ReactiveCocoa', :path => "../"
+  pod 'Moya-ObjectMapper/RxSwift', :path => "../"
+end
+
+# Test Libraries
+def test_pods
+  pod 'Quick'
+  pod 'Nimble'
+  pod 'OHHTTPStubs'
+end
+
+target 'Demo' do
+  platform :ios, '8.0'
+  libraries
+end

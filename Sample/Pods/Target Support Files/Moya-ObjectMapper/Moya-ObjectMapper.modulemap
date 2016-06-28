@@ -1,0 +1,6 @@
+framework module Moya_ObjectMapper {
+  umbrella header "Moya-ObjectMapper-umbrella.h"
+
+  export *
+  module * { export * }
+}
