@@ -99,7 +99,7 @@ GitHubProvider.request(.UserRepositories(username))
     default:
       break
     }
-  }
+  }.addDisposableTo(disposeBag)
 ```
 
 # Contributing
