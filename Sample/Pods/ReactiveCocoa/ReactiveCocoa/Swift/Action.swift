@@ -47,13 +47,6 @@ public final class Action<Input, Output, Error: ErrorType> {
 	/// Whether the instantiator of this action wants it to be enabled.
 	private let userEnabled: AnyProperty<Bool>
 
-	/// Lazy creation and storage of a UI bindable `CocoaAction`. The default behavior
-	/// force casts the AnyObject? input to match the action's `Input` type. This makes
-	/// it unsafe for use when the action is parameterized for something like `Void`
-	/// input. In those cases, explicitly assign a value to this property that transforms
-	/// the input to suit your needs.
-	public lazy var unsafeCocoaAction: CocoaAction = CocoaAction(self) { $0 as! Input }
-
 	/// This queue is used for read-modify-write operations on the `_executing`
 	/// property.
 	private let executingQueue = dispatch_queue_create("org.reactivecocoa.ReactiveCocoa.Action.executingQueue", DISPATCH_QUEUE_SERIAL)
@@ -64,8 +57,14 @@ public final class Action<Input, Output, Error: ErrorType> {
 		return userEnabled && !executing
 	}
 
-	/// Initializes an action that will be conditionally enabled, and create a
+	/// Initializes an action that will be conditionally enabled, and creates a
 	/// SignalProducer for each input.
+	///
+	/// - parameters:
+	///   - enabledIf: Boolean property that shows whether the action is
+	///                enabled.
+	///   - execute: A closure that returns the signal producer returned by
+	///              calling `apply(Input)` on the action.
 	public init<P: PropertyType where P.Value == Bool>(enabledIf: P, _ execute: Input -> SignalProducer<Output, Error>) {
 		executeClosure = execute
 		userEnabled = AnyProperty(enabledIf)
@@ -76,12 +75,16 @@ public final class Action<Input, Output, Error: ErrorType> {
 		errors = events.map { $0.error }.ignoreNil()
 
 		_enabled <~ enabledIf.producer
-			.combineLatestWith(executing.producer)
+			.combineLatestWith(_executing.producer)
 			.map(Action.shouldBeEnabled)
 	}
 
-	/// Initializes an action that will be enabled by default, and create a
+	/// Initializes an action that will be enabled by default, and creates a
 	/// SignalProducer for each input.
+	///
+	/// - parameters:
+	///   - execute: A closure that returns the signal producer returned by
+	///              calling `apply(Input)` on the action.
 	public convenience init(_ execute: Input -> SignalProducer<Output, Error>) {
 		self.init(enabledIf: ConstantProperty(true), execute)
 	}
@@ -93,9 +96,14 @@ public final class Action<Input, Output, Error: ErrorType> {
 	/// Creates a SignalProducer that, when started, will execute the action
 	/// with the given input, then forward the results upon the produced Signal.
 	///
-	/// If the action is disabled when the returned SignalProducer is started,
-	/// the produced signal will send `ActionError.NotEnabled`, and nothing will
-	/// be sent upon `values` or `errors` for that particular signal.
+	/// - note: If the action is disabled when the returned SignalProducer is
+	///         started, the produced signal will send `ActionError.NotEnabled`,
+	///         and nothing will be sent upon `values` or `errors` for that
+	///         particular signal.
+	///
+	/// - parameters:
+	///   - input: A value that will be passed to the closure creating the signal
+	///            producer.
 	@warn_unused_result(message="Did you forget to call `start` on the producer?")
 	public func apply(input: Input) -> SignalProducer<Output, ActionError<Error>> {
 		return SignalProducer { observer, disposable in
@@ -117,96 +125,55 @@ public final class Action<Input, Output, Error: ErrorType> {
 				disposable.addDisposable(signalDisposable)
 
 				signal.observe { event in
-					observer.action(event.mapError { .ProducerError($0) })
+					observer.action(event.mapError(ActionError.ProducerError))
 					self.eventsObserver.sendNext(event)
 				}
 			}
 
-			disposable.addDisposable {
+			disposable += {
 				self._executing.value = false
 			}
 		}
 	}
 }
 
-/// Wraps an Action for use by a GUI control (such as `NSControl` or
-/// `UIControl`), with KVO, or with Cocoa Bindings.
-public final class CocoaAction: NSObject {
-	/// The selector that a caller should invoke upon a CocoaAction in order to
-	/// execute it.
-	public static let selector: Selector = #selector(CocoaAction.execute(_:))
+public protocol ActionType {
+	/// The type of argument to apply the action to.
+	associatedtype Input
+	/// The type of values returned by the action.
+	associatedtype Output
+	/// The type of error when the action fails. If errors aren't possible then
+	/// `NoError` can be used.
+	associatedtype Error: ErrorType
 
-	/// Whether the action is enabled.
+	/// Whether the action is currently enabled.
+	var enabled: AnyProperty<Bool> { get }
+
+	/// Extracts an action from the receiver.
+	var action: Action<Input, Output, Error> { get }
+
+	/// Creates a SignalProducer that, when started, will execute the action
+	/// with the given input, then forward the results upon the produced Signal.
 	///
-	/// This property will only change on the main thread, and will generate a
-	/// KVO notification for every change.
-	public var enabled: Bool {
-		return _enabled
-	}
-
-	/// Whether the action is executing.
+	/// - note: If the action is disabled when the returned SignalProducer is
+	///         started, the produced signal will send `ActionError.NotEnabled`,
+	///         and nothing will be sent upon `values` or `errors` for that
+	///         particular signal.
 	///
-	/// This property will only change on the main thread, and will generate a
-	/// KVO notification for every change.
-	public var executing: Bool {
-		return _executing
-	}
+	/// - parameters:
+	///   - input: A value that will be passed to the closure creating the signal
+	///            producer.
+	func apply(input: Input) -> SignalProducer<Output, ActionError<Error>>
+}
 
-	private var _enabled = false
-	private var _executing = false
-	private let _execute: AnyObject? -> ()
-	private let disposable = CompositeDisposable()
-
-	/// Initializes a Cocoa action that will invoke the given Action by
-	/// transforming the object given to execute().
-	public init<Input, Output, Error>(_ action: Action<Input, Output, Error>, _ inputTransform: AnyObject? -> Input) {
-		_execute = { input in
-			let producer = action.apply(inputTransform(input))
-			producer.start()
-		}
-
-		super.init()
-
-		disposable += action.enabled.producer
-			.observeOn(UIScheduler())
-			.startWithNext { [weak self] value in
-				self?.willChangeValueForKey("enabled")
-				self?._enabled = value
-				self?.didChangeValueForKey("enabled")
-			}
-
-		disposable += action.executing.producer
-			.observeOn(UIScheduler())
-			.startWithNext { [weak self] value in
-				self?.willChangeValueForKey("executing")
-				self?._executing = value
-				self?.didChangeValueForKey("executing")
-			}
-	}
-
-	/// Initializes a Cocoa action that will invoke the given Action by
-	/// always providing the given input.
-	public convenience init<Input, Output, Error>(_ action: Action<Input, Output, Error>, input: Input) {
-		self.init(action, { _ in input })
-	}
-
-	deinit {
-		disposable.dispose()
-	}
-
-	/// Attempts to execute the underlying action with the given input, subject
-	/// to the behavior described by the initializer that was used.
-	@IBAction public func execute(input: AnyObject?) {
-		_execute(input)
-	}
-
-	public override class func automaticallyNotifiesObserversForKey(key: String) -> Bool {
-		return false
+extension Action: ActionType {
+	public var action: Action {
+		return self
 	}
 }
 
-/// The type of error that can occur from Action.apply, where `Error` is the type of
-/// error that can be generated by the specific Action instance.
+/// The type of error that can occur from Action.apply, where `Error` is the 
+/// type of error that can be generated by the specific Action instance.
 public enum ActionError<Error: ErrorType>: ErrorType {
 	/// The producer returned from apply() was started while the Action was
 	/// disabled.

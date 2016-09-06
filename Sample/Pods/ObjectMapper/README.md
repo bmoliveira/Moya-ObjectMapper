@@ -113,13 +113,10 @@ ObjectMapper can map classes composed of the following types:
 ## `Mappable` Protocol
 
 #### `init?(_ map: Map)` 
-This failable initializer can be used for JSON validation prior to object serialization. Returning nil within the function will prevent the mapping from occuring. You can inspect the JSON stored within the `Map` object to do your validation. See two approaches to do this below:
-```
+This failable initializer can be used for JSON validation prior to object serialization. Returning nil within the function will prevent the mapping from occuring. You can inspect the JSON stored within the `Map` object to do your validation:
+```swift
 required init?(_ map: Map){
 	// check if a required "name" property exists within the JSON.
-	if map["name"].value() == nil {
-		return nil
-	}
 	if map.JSONDictionary["name"] == nil {
 		return nil
 	}
@@ -129,8 +126,12 @@ required init?(_ map: Map){
 #### `mutating func mapping(map: Map)` 
 This function is where all mapping definitions should go. When parsing JSON, it is executed after a successful object initialization. When generating JSON, it is the only function that is called on the object.
 
+### `StaticMappable` Protocol
+
+This is a sub protocol of Mappable that provides an extra static function that can be used instead of `init?(_ map: Map)`
+
 #### `static func objectForMapping(map: Map) -> Mappable?` 
-This is an optional function. If it is implemented, `init?(_ map: Map)` will no longer be called by ObjectMapper. This function should be used to:
+If this function is implemented, `init?(_ map: Map)` will no longer be called by ObjectMapper. This function should be used to:
 - provide an existing cached object to be used for mapping
 - return an object of another type (which also conforms to Mappable) to be used for mapping. For instance, you may inspect the JSON to infer the type of object that should be used for mapping ([see example](https://github.com/Hearst-DD/ObjectMapper/blob/master/ObjectMapperTests/ClassClusterTests.swift#L62))
 
@@ -257,8 +258,8 @@ let result = Mapper<Result<User>>().map(JSON)
 
 The `Map` object which is passed around during mapping, has an optional `MapContext` object that is available for developers to use if they need to pass information around during mapping. 
 
-To take advantage of this feature, simple create an object that implments `MapContext` (which is an empty protocol) and pass it into `Mapper` during initialization. 
-```
+To take advantage of this feature, simple create an object that implements `MapContext` (which is an empty protocol) and pass it into `Mapper` during initialization. 
+```swift
 struct Context: MapContext {
 	var importantMappingInfo = "Info that I need during mapping"
 }
@@ -321,12 +322,12 @@ Before submitting any pull request, please ensure you have run the included test
 ObjectMapper can be added to your project using [CocoaPods 0.36 or later](http://blog.cocoapods.org/Pod-Authors-Guide-to-CocoaPods-Frameworks/) by adding the following line to your `Podfile`:
 
 ```ruby
-pod 'ObjectMapper', '~> 1.2'
+pod 'ObjectMapper', '~> 1.3'
 ```
 
 If you're using [Carthage](https://github.com/Carthage/Carthage) you can add a dependency on ObjectMapper by adding it to your `Cartfile`:
 ```
-github "Hearst-DD/ObjectMapper" ~> 1.2
+github "Hearst-DD/ObjectMapper" ~> 1.3
 ```
 
 Otherwise, ObjectMapper can be added as a submodule:

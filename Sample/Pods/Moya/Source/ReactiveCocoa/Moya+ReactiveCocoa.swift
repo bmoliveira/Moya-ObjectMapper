@@ -9,14 +9,15 @@ public class ReactiveCocoaMoyaProvider<Target where Target: TargetType>: MoyaPro
         requestClosure: RequestClosure = MoyaProvider.DefaultRequestMapping,
         stubClosure: StubClosure = MoyaProvider.NeverStub,
         manager: Manager = ReactiveCocoaMoyaProvider<Target>.DefaultAlamofireManager(),
-        plugins: [PluginType] = [], stubScheduler: DateSchedulerType? = nil) {
+        plugins: [PluginType] = [], stubScheduler: DateSchedulerType? = nil,
+        trackInflights: Bool = false) {
             self.stubScheduler = stubScheduler
-            super.init(endpointClosure: endpointClosure, requestClosure: requestClosure, stubClosure: stubClosure, manager: manager, plugins: plugins)
+            super.init(endpointClosure: endpointClosure, requestClosure: requestClosure, stubClosure: stubClosure, manager: manager, plugins: plugins, trackInflights: trackInflights)
     }
-    
+
     /// Designated request-making method.
     public func request(token: Target) -> SignalProducer<Response, Error> {
-        
+
         // Creates a producer that starts a request each time it's started.
         return SignalProducer { [weak self] observer, requestDisposable in
             let cancellableToken = self?.request(token) { result in
@@ -29,7 +30,7 @@ public class ReactiveCocoaMoyaProvider<Target where Target: TargetType>: MoyaPro
                     observer.sendFailed(error)
                 }
             }
-            
+
             requestDisposable.addDisposable {
                 // Cancel the request
                 cancellableToken?.cancel()
@@ -59,9 +60,39 @@ public class ReactiveCocoaMoyaProvider<Target where Target: TargetType>: MoyaPro
         }
         return token
     }
+}
 
-    @available(*, deprecated, message="This will be removed when ReactiveCocoa 4 becomes final. Please visit https://github.com/Moya/Moya/issues/298 for more information.")
-    public func request(token: Target) -> RACSignal {
-        return request(token).toRACSignal()
+public extension ReactiveCocoaMoyaProvider {
+    public func requestWithProgress(token: Target) -> SignalProducer<ProgressResponse, Error> {
+        let progressBlock = { (observer: Signal<ProgressResponse, Error>.Observer) -> (ProgressResponse) -> Void in
+            return { (progress: ProgressResponse) in
+                observer.sendNext(progress)
+            }
+        }
+
+        let response: SignalProducer<ProgressResponse, Error> = SignalProducer { [weak self] observer, disposable in
+            let cancellableToken = self?.request(token, queue: nil, progress: progressBlock(observer)) { result in
+                switch result {
+                case let .Success(response):
+                    observer.sendNext(ProgressResponse(response: response))
+                    observer.sendCompleted()
+                case let .Failure(error):
+                    observer.sendFailed(error)
+                }
+            }
+
+            let cleanUp = ActionDisposable {
+                cancellableToken?.cancel()
+            }
+            disposable.addDisposable(cleanUp)
+        }
+
+        // Accumulate all progress and combine them when the result comes
+        return response.scan(ProgressResponse()) { (last, progress) in
+            let totalBytes = progress.totalBytes > 0 ? progress.totalBytes : last.totalBytes
+            let bytesExpected = progress.bytesExpected > 0 ? progress.bytesExpected : last.bytesExpected
+            let response = progress.response ?? last.response
+            return ProgressResponse(totalBytes: totalBytes, bytesExpected: bytesExpected, response: response)
+        }
     }
 }
