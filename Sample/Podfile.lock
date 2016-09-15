@@ -1,27 +1,27 @@
 PODS:
-  - Alamofire (3.4.2)
-  - Moya (7.0.0):
-    - Moya/Core (= 7.0.0)
-  - Moya-ObjectMapper (1.3.1):
-    - Moya-ObjectMapper/Core (= 1.3.1)
-  - Moya-ObjectMapper/Core (1.3.1):
-    - Moya (~> 7.0)
-    - ObjectMapper (~> 1.3)
-  - Moya-ObjectMapper/ReactiveCocoa (1.3.1):
+  - Alamofire (3.5.0)
+  - Moya (7.0.2):
+    - Moya/Core (= 7.0.2)
+  - Moya-ObjectMapper (1.4):
+    - Moya-ObjectMapper/Core (= 1.4)
+  - Moya-ObjectMapper/Core (1.4):
+    - Moya (~> 7.0.2)
+    - ObjectMapper (~> 1.4)
+  - Moya-ObjectMapper/ReactiveCocoa (1.4):
     - Moya-ObjectMapper/Core
-    - Moya/ReactiveCocoa (~> 7.0)
-    - ReactiveCocoa (~> 4.0)
-  - Moya-ObjectMapper/RxSwift (1.3.1):
+    - Moya/ReactiveCocoa (~> 7.0.2)
+    - ReactiveCocoa (~> 4.2.2)
+  - Moya-ObjectMapper/RxSwift (1.4):
     - Moya-ObjectMapper/Core
-    - Moya/RxSwift (~> 7.0)
-    - RxSwift (~> 2.0)
-  - Moya/Core (7.0.0):
-    - Alamofire (~> 3.0)
+    - Moya/RxSwift (~> 7.0.2)
+    - RxSwift (~> 2.6.0)
+  - Moya/Core (7.0.2):
+    - Alamofire (~> 3.5)
     - Result (~> 2.0)
-  - Moya/ReactiveCocoa (7.0.0):
+  - Moya/ReactiveCocoa (7.0.2):
     - Moya/Core
     - ReactiveCocoa (~> 4.0)
-  - Moya/RxSwift (7.0.0):
+  - Moya/RxSwift (7.0.2):
     - Moya/Core
     - RxSwift (~> 2.0)
   - ObjectMapper (1.4.0)
@@ -40,14 +40,14 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: 6aa33201d20d069e1598891cf928883ff1888c7a
-  Moya: f004b82418fb8165ee1fc9f86190db4b3611fda9
-  Moya-ObjectMapper: 52f15abd982efc8ba2ce3fc49619555c926c14a1
+  Alamofire: b70a7352335f8ea5babd0a923eb7e8eacc67b877
+  Moya: 430be684a6a53d5ad8c0b8222c4232d4f1810848
+  Moya-ObjectMapper: a50b96426316be8892fe20dfe02cf8bc947e657d
   ObjectMapper: a07ad0462c5adf014adc0f89ef04c29b626e855e
   ReactiveCocoa: 72263e7ac0770c274617ccd345e01049d0ca38ae
   Result: 18e1a7597fbcca5923c565b40a25a98afafdee02
   RxSwift: 77f3a0b15324baa7a1c9bfa9f199648a82424e26
 
-PODFILE CHECKSUM: 2d43147f401658ee8bc01887f4be3864a85d9e1c
+PODFILE CHECKSUM: 37dabdd3fbb802f0b147d2d248cce91cbb7180d7
 
 COCOAPODS: 1.0.1
