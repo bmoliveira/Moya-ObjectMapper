@@ -22,22 +22,22 @@ Pod::Spec.new do |s|
 
   s.subspec "Core" do |ss|
     ss.source_files  = "Source/*.swift"
-    ss.dependency "Moya", "~> 7.0"
+    ss.dependency "Moya"
     ss.dependency "ObjectMapper"
     ss.framework  = "Foundation"
   end
 
   s.subspec "RxSwift" do |ss|
     ss.source_files = "Source/RxSwift/*.swift"
-    ss.dependency "Moya/RxSwift", "~> 7.0"
+    ss.dependency "Moya/RxSwift"
     ss.dependency "Moya-ObjectMapper/Core"
-    ss.dependency "RxSwift", "~> 2.0"
+    ss.dependency "RxSwift"
   end
 
   s.subspec "ReactiveCocoa" do |ss|
     ss.source_files = "Source/ReactiveCocoa/*.swift"
-    ss.dependency "Moya/ReactiveCocoa", "~> 7.0"
+    ss.dependency "Moya/ReactiveCocoa"
     ss.dependency "Moya-ObjectMapper/Core"
-    ss.dependency "ReactiveCocoa", "~> 4.0"
+    ss.dependency "ReactiveCocoa"
   end
 end
