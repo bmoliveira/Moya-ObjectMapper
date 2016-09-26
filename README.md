@@ -21,6 +21,7 @@ The subspec if you want to use the bindings over RxSwift.
 ```ruby
 pod 'Moya-ObjectMapper/RxSwift', '~> 2.0'
 pod 'Moya', :git => 'https://github.com/Moya/Moya'
+pod 'RxSwift', :git => 'https://github.com/ReactiveX/RxSwift'
 
 ```
 
