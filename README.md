@@ -1,6 +1,7 @@
 Moya-ObjectMapper
 ============
 [![CocoaPods](https://img.shields.io/cocoapods/v/Moya-ObjectMapper.svg)](https://github.com/ivanbruel/Moya-ObjectMapper)
+![Swift 3.0.x](https://img.shields.io/badge/Swift-3.0.x-orange.svg)
 
 [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper) bindings for
 [Moya](https://github.com/Moya/Moya) for easier JSON serialization.
@@ -11,19 +12,24 @@ Includes [RxSwift](https://github.com/ReactiveX/RxSwift/) bindings as well.
 ## CocoaPods
 
 ```ruby
-pod 'Moya-ObjectMapper', '~> 1.4'
+pod 'Moya-ObjectMapper', '~> 2.0'
+pod 'Moya', :git => 'https://github.com/Moya/Moya'
 ```
 
 The subspec if you want to use the bindings over RxSwift.
 
 ```ruby
-pod 'Moya-ObjectMapper/RxSwift', '~> 1.4'
+pod 'Moya-ObjectMapper/RxSwift', '~> 2.0'
+pod 'Moya', :git => 'https://github.com/Moya/Moya'
+
 ```
 
 And the subspec if you want to use the bindings over ReactiveCocoa.
 
 ```ruby
-pod 'Moya-ObjectMapper/ReactiveCocoa', '~> 1.4'
+pod 'Moya-ObjectMapper/ReactiveCocoa', '~> 2.0'
+pod 'Moya', :git => 'https://github.com/Moya/Moya'
+pod 'ReactiveSwift', :git => 'https://github.com/ReactiveCocoa/ReactiveSwift'
 ```
 
 # Usage
@@ -57,13 +63,13 @@ struct Repository: Mappable {
 
 
 ```swift
-GitHubProvider.request(.UserRepositories(username), completion: { result in
+GitHubProvider.request(.userRepositories(username), completion: { result in
 
     var success = true
     var message = "Unable to fetch from GitHub"
 
     switch result {
-    case let .Success(response):
+    case let .success(response):
         do {
             if let repos = try response.mapArray(Repository) {
               self.repos = repos
@@ -74,7 +80,7 @@ GitHubProvider.request(.UserRepositories(username), completion: { result in
             success = false
         }
         self.tableView.reloadData()
-    case let .Failure(error):
+    case let .failure(error):
         guard let error = error as? CustomStringConvertible else {
             break
         }
@@ -88,7 +94,7 @@ GitHubProvider.request(.UserRepositories(username), completion: { result in
 ## 2. With RxSwift
 
 ```swift
-GitHubProvider.request(.UserRepositories(username))
+GitHubProvider.request(.userRepositories(username))
   .mapArray(Repository)
   .subscribe { event -> Void in
     switch event {
