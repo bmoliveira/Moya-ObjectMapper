@@ -9,6 +9,8 @@ Includes [RxSwift](https://github.com/ReactiveX/RxSwift/) bindings as well.
 
 # Installation
 
+Due to the fact that most libraries haven't officially released a Swift 3.0 version, your Podfile needs to have aditional dependency specification.
+
 ## CocoaPods
 
 ```ruby
