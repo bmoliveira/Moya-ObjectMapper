@@ -12,14 +12,14 @@ class ViewController: UITableViewController {
 
     // MARK: - API Stuff
 
-    func downloadRepositories(username: String) {
-        GitHubProvider.request(.UserRepositories(username), completion: { result in
+    func downloadRepositories(_ username: String) {
+        GitHubProvider.request(.userRepositories(username), completion: { result in
 
             var success = true
             var message = "Unable to fetch from GitHub"
             
             switch result {
-            case let .Success(response):
+            case let .success(response):
                 do {
                     let repos: [Repository]? = try response.mapArray(Repository)
                     if let repos = repos {
@@ -32,7 +32,7 @@ class ViewController: UITableViewController {
                     success = false
                 }
                 self.tableView.reloadData()
-            case let .Failure(error):
+            case let .failure(error):
                 guard let error = error as? CustomStringConvertible else {
                     break
                 }
@@ -41,66 +41,66 @@ class ViewController: UITableViewController {
             }
             
             if !success {
-                let alertController = UIAlertController(title: "GitHub Fetch", message: message, preferredStyle: .Alert)
-                let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-                    alertController.dismissViewControllerAnimated(true, completion: nil)
+                let alertController = UIAlertController(title: "GitHub Fetch", message: message, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                  alertController.dismiss(animated: true, completion: nil)
                 })
                 alertController.addAction(ok)
-                self.presentViewController(alertController, animated: true, completion: nil)
+                self.present(alertController, animated: true, completion: nil)
             }
         })
     }
 
     func downloadZen() {
-        GitHubProvider.request(.Zen, completion: { result in
+        GitHubProvider.request(.zen, completion: { result in
             var message = "Couldn't access API"
-            if case let .Success(response) = result {
+            if case let .success(response) = result {
                 message = (try? response.mapString()) ?? message
             }
 
-            let alertController = UIAlertController(title: "Zen", message: message, preferredStyle: .Alert)
-            let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-                alertController.dismissViewControllerAnimated(true, completion: nil)
+            let alertController = UIAlertController(title: "Zen", message: message, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+              alertController.dismiss(animated: true, completion: nil)
             })
             alertController.addAction(ok)
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
         })
     }
 
     // MARK: - User Interaction
 
-    @IBAction func searchWasPressed(sender: UIBarButtonItem) {
+    @IBAction func searchWasPressed(_ sender: UIBarButtonItem) {
         var usernameTextField: UITextField?
 
-        let promptController = UIAlertController(title: "Username", message: nil, preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+        let promptController = UIAlertController(title: "Username", message: nil, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             if let usernameTextField = usernameTextField {
                 self.downloadRepositories(usernameTextField.text!)
             }
         })
-        _ = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in
+        _ = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
         }
         promptController.addAction(ok)
-        promptController.addTextFieldWithConfigurationHandler { (textField) -> Void in
+        promptController.addTextField { (textField) -> Void in
             usernameTextField = textField
         }
-        presentViewController(promptController, animated: true, completion: nil)
+        present(promptController, animated: true, completion: nil)
     }
 
-    @IBAction func zenWasPressed(sender: UIBarButtonItem) {
+    @IBAction func zenWasPressed(_ sender: UIBarButtonItem) {
         downloadZen()
     }
 
     // MARK: - Table View
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return repos.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
 
-        let repo = repos[indexPath.row]
+        let repo = repos[(indexPath as NSIndexPath).row]
         (cell.textLabel as UILabel!).text = repo.name
         return cell
     }

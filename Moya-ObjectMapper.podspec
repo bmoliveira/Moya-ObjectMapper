@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Moya-ObjectMapper"
-  s.version      = "1.4"
+  s.version      = "2.0"
   s.summary      = "ObjectMapper bindings for Moya"
   s.description  = <<-EOS
   [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper) bindings for
@@ -38,6 +38,6 @@ Pod::Spec.new do |s|
     ss.source_files = "Source/ReactiveCocoa/*.swift"
     ss.dependency "Moya/ReactiveCocoa"
     ss.dependency "Moya-ObjectMapper/Core"
-    ss.dependency "ReactiveCocoa"
+    ss.dependency "ReactiveSwift"
   end
 end

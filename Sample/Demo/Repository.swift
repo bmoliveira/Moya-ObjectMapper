@@ -80,7 +80,7 @@ struct Repository: Mappable {
   var language: String!
   var hasPages: Bool!
 
-  init?(_ map: Map) { }
+  init?(map: Map) { }
 
   mutating func mapping(map: Map) {
     keysURL <- map["keys_url"]

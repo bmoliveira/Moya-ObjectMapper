@@ -5,17 +5,17 @@ import Result
 ///
 /// for example, a plugin may be used to
 ///     - log network requests
-///     - hide and show a network avtivity indicator
+///     - hide and show a network activity indicator
 ///     - inject additional information into a request
 public protocol PluginType {
     /// Called immediately before a request is sent over the network (or stubbed).
-    func willSendRequest(request: RequestType, target: TargetType)
+    func willSendRequest(_ request: RequestType, target: TargetType)
 
     // Called after a response has been received, but before the MoyaProvider has invoked its completion handler.
-    func didReceiveResponse(result: Result<Moya.Response, Moya.Error>, target: TargetType)
+    func didReceiveResponse(_ result: Result<Moya.Response, Moya.Error>, target: TargetType)
 }
 
-/// Request type used by willSendRequest plugin function.
+/// Request type used by `willSendRequest` plugin function.
 public protocol RequestType {
 
     // Note:
@@ -23,12 +23,12 @@ public protocol RequestType {
     // We use this protocol instead of the Alamofire request to avoid leaking that abstraction.
     // A plugin should not know about Alamofire at all.
 
-    /// Retrieve an NSURLRequest represetation.
-    var request: NSURLRequest? { get }
+    /// Retrieve an `NSURLRequest` representation.
+    var request: URLRequest? { get }
 
     /// Authenticates the request with a username and password.
-    func authenticate(user user: String, password: String, persistence: NSURLCredentialPersistence) -> Self
+    func authenticate(user: String, password: String, persistence: URLCredential.Persistence) -> Self
 
-    /// Authnenticates the request with a NSURLCredential instance.
-    func authenticate(usingCredential credential: NSURLCredential) -> Self
+    /// Authenticates the request with an `NSURLCredential` instance.
+    func authenticate(usingCredential credential: URLCredential) -> Self
 }

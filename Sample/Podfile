@@ -7,6 +7,9 @@ def libraries
   pod 'Moya-ObjectMapper', :path => "../"
   pod 'Moya-ObjectMapper/ReactiveCocoa', :path => "../"
   pod 'Moya-ObjectMapper/RxSwift', :path => "../"
+  pod 'Moya', :git => 'https://github.com/Moya/Moya'
+  pod 'ReactiveSwift', :git => 'https://github.com/ReactiveCocoa/ReactiveSwift'
+  pod 'RxSwift', :git => 'https://github.com/ReactiveX/RxSwift'
 end
 
 # Test Libraries
@@ -19,12 +22,4 @@ end
 target 'Demo' do
   platform :ios, '9.0'
   libraries
-end
-
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      config.build_settings['SWIFT_VERSION'] = '2.3'
-    end
-  end
 end
