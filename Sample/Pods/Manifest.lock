@@ -2,40 +2,29 @@ PODS:
   - Alamofire (4.0.1)
   - Moya (8.0.0-beta.3):
     - Moya/Core (= 8.0.0-beta.3)
-  - Moya-ObjectMapper (2.0):
-    - Moya-ObjectMapper/Core (= 2.0)
-  - Moya-ObjectMapper/Core (2.0):
+  - Moya-ObjectMapper (2.0.1):
+    - Moya-ObjectMapper/Core (= 2.0.1)
+  - Moya-ObjectMapper/Core (2.0.1):
     - Moya
     - ObjectMapper
-  - Moya-ObjectMapper/ReactiveCocoa (2.0):
-    - Moya-ObjectMapper/Core
-    - Moya/ReactiveCocoa
-    - ReactiveSwift
-  - Moya-ObjectMapper/RxSwift (2.0):
+  - Moya-ObjectMapper/RxSwift (2.0.1):
     - Moya-ObjectMapper/Core
     - Moya/RxSwift
     - RxSwift
   - Moya/Core (8.0.0-beta.3):
     - Alamofire (~> 4.0.0)
     - Result
-  - Moya/ReactiveCocoa (8.0.0-beta.3):
-    - Moya/Core
-    - ReactiveSwift
   - Moya/RxSwift (8.0.0-beta.3):
     - Moya/Core
     - RxSwift
   - ObjectMapper (2.2.0)
-  - ReactiveSwift (1.0.0-alpha.3):
-    - Result (~> 3.0)
   - Result (3.0.0)
   - RxSwift (3.0.0)
 
 DEPENDENCIES:
   - Moya (from `https://github.com/Moya/Moya`)
   - Moya-ObjectMapper (from `../`)
-  - Moya-ObjectMapper/ReactiveCocoa (from `../`)
   - Moya-ObjectMapper/RxSwift (from `../`)
-  - ReactiveSwift (from `https://github.com/ReactiveCocoa/ReactiveSwift`)
   - RxSwift (from `https://github.com/ReactiveX/RxSwift`)
 
 EXTERNAL SOURCES:
@@ -43,8 +32,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/Moya/Moya
   Moya-ObjectMapper:
     :path: "../"
-  ReactiveSwift:
-    :git: https://github.com/ReactiveCocoa/ReactiveSwift
   RxSwift:
     :git: https://github.com/ReactiveX/RxSwift
 
@@ -52,9 +39,6 @@ CHECKOUT OPTIONS:
   Moya:
     :commit: da056cf54941eecc9b235c606cdb0cff0cf70ee0
     :git: https://github.com/Moya/Moya
-  ReactiveSwift:
-    :commit: b6ba01c55f33cb7a9bc531ee98ee6963dbbbb977
-    :git: https://github.com/ReactiveCocoa/ReactiveSwift
   RxSwift:
     :commit: 3c55a309a24fbe3dbc480431798eec072b633b85
     :git: https://github.com/ReactiveX/RxSwift
@@ -62,12 +46,11 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   Moya: f83c7f81eaa28cb0151549dfcf1f3fda4440bb50
-  Moya-ObjectMapper: 5561318dd361c9abee6d05fd103222cf5c007cdf
+  Moya-ObjectMapper: ab4f1197ef83610534f1d4bb3bab5af9bfdd8323
   ObjectMapper: 4060d739febae11ab0c6af8d786f98667c82e1bd
-  ReactiveSwift: d67b677f9574ba614d94022a88fcf456e77fa515
   Result: 1b3e431f37cbcd3ad89c6aa9ab0ae55515fae3b6
   RxSwift: 931443655decc4aec2ff4e4197bf1720c2d49c57
 
-PODFILE CHECKSUM: 511b8c4eaa2b7b114aae34d855f34f898229f7c1
+PODFILE CHECKSUM: 21e07bee67f4d0671309183bb731765a9d226618
 
 COCOAPODS: 1.1.1
