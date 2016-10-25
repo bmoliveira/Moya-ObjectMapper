@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (4.0.1)
-  - Moya (8.0.0-beta.2):
-    - Moya/Core (= 8.0.0-beta.2)
+  - Moya (8.0.0-beta.3):
+    - Moya/Core (= 8.0.0-beta.3)
   - Moya-ObjectMapper (2.0):
     - Moya-ObjectMapper/Core (= 2.0)
   - Moya-ObjectMapper/Core (2.0):
@@ -15,20 +15,20 @@ PODS:
     - Moya-ObjectMapper/Core
     - Moya/RxSwift
     - RxSwift
-  - Moya/Core (8.0.0-beta.2):
+  - Moya/Core (8.0.0-beta.3):
     - Alamofire (~> 4.0.0)
     - Result
-  - Moya/ReactiveCocoa (8.0.0-beta.2):
+  - Moya/ReactiveCocoa (8.0.0-beta.3):
     - Moya/Core
     - ReactiveSwift
-  - Moya/RxSwift (8.0.0-beta.2):
+  - Moya/RxSwift (8.0.0-beta.3):
     - Moya/Core
     - RxSwift
-  - ObjectMapper (2.0.0)
-  - ReactiveSwift (1.0.0-alpha.1):
+  - ObjectMapper (2.2.0)
+  - ReactiveSwift (1.0.0-alpha.3):
     - Result (~> 3.0)
   - Result (3.0.0)
-  - RxSwift (3.0.0-beta.1)
+  - RxSwift (3.0.0)
 
 DEPENDENCIES:
   - Moya (from `https://github.com/Moya/Moya`)
@@ -50,24 +50,24 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Moya:
-    :commit: 2567588adf1f5f88183c8a1e092b5272aa34037d
+    :commit: da056cf54941eecc9b235c606cdb0cff0cf70ee0
     :git: https://github.com/Moya/Moya
   ReactiveSwift:
-    :commit: cb27683af586f0988e28d6407f3ff8647f9d84cb
+    :commit: b6ba01c55f33cb7a9bc531ee98ee6963dbbbb977
     :git: https://github.com/ReactiveCocoa/ReactiveSwift
   RxSwift:
-    :commit: 3289dbc1d3f0d31099cebe4bfed55c01dc678682
+    :commit: 3c55a309a24fbe3dbc480431798eec072b633b85
     :git: https://github.com/ReactiveX/RxSwift
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
-  Moya: 920d40f738e6f4ece84010cec701bb9693be8251
+  Moya: f83c7f81eaa28cb0151549dfcf1f3fda4440bb50
   Moya-ObjectMapper: 5561318dd361c9abee6d05fd103222cf5c007cdf
-  ObjectMapper: aed2570edabbd3c9b26c939e1cabdb6558f933e0
-  ReactiveSwift: cf34523b2b0dd8fbfc8fda484b0d0585e3d74955
+  ObjectMapper: 4060d739febae11ab0c6af8d786f98667c82e1bd
+  ReactiveSwift: d67b677f9574ba614d94022a88fcf456e77fa515
   Result: 1b3e431f37cbcd3ad89c6aa9ab0ae55515fae3b6
-  RxSwift: 0823e8d7969c23bfa9ddfb2afa4881e424a1a710
+  RxSwift: 931443655decc4aec2ff4e4197bf1720c2d49c57
 
 PODFILE CHECKSUM: 511b8c4eaa2b7b114aae34d855f34f898229f7c1
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.1.1

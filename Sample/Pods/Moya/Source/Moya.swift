@@ -11,7 +11,7 @@ public struct ProgressResponse {
     public let response: Response?
     public let progressObject: Progress?
 
-    init(progress: Progress? = nil, response: Response? = nil) {
+    public init(progress: Progress? = nil, response: Response? = nil) {
         self.progressObject = progress
         self.response = response
     }
@@ -55,10 +55,10 @@ open class MoyaProvider<Target: TargetType> {
     open internal(set) var inflightRequests = Dictionary<Endpoint<Target>, [Moya.Completion]>()
 
     /// Initializes a provider.
-    public init(endpointClosure: @escaping EndpointClosure = MoyaProvider.DefaultEndpointMapping,
-        requestClosure: @escaping RequestClosure = MoyaProvider.DefaultRequestMapping,
-        stubClosure: @escaping StubClosure = MoyaProvider.NeverStub,
-        manager: Manager = MoyaProvider<Target>.DefaultAlamofireManager(),
+    public init(endpointClosure: @escaping EndpointClosure = MoyaProvider.defaultEndpointMapping,
+        requestClosure: @escaping RequestClosure = MoyaProvider.defaultRequestMapping,
+        stubClosure: @escaping StubClosure = MoyaProvider.neverStub,
+        manager: Manager = MoyaProvider<Target>.defaultAlamofireManager(),
         plugins: [PluginType] = [],
         trackInflights: Bool = false) {
 
@@ -90,7 +90,7 @@ open class MoyaProvider<Target: TargetType> {
     /// When overriding this method, take care to `notifyPluginsOfImpendingStub` and to perform the stub using the `createStubFunction` method.
     /// Note: this was previously in an extension, however it must be in the original class declaration to allow subclasses to override.
     @discardableResult
-    func stubRequest(_ target: Target, request: URLRequest, completion: @escaping Moya.Completion, endpoint: Endpoint<Target>, stubBehavior: Moya.StubBehavior) -> CancellableToken {
+    open func stubRequest(_ target: Target, request: URLRequest, completion: @escaping Moya.Completion, endpoint: Endpoint<Target>, stubBehavior: Moya.StubBehavior) -> CancellableToken {
         let cancellableToken = CancellableToken { }
         notifyPluginsOfImpendingStub(request, target: target)
         let plugins = self.plugins
@@ -119,15 +119,15 @@ public extension MoyaProvider {
     // Swift won't let us put the StubBehavior enum inside the provider class, so we'll
     // at least add some class functions to allow easy access to common stubbing closures.
 
-    public final class func NeverStub(_: Target) -> Moya.StubBehavior {
+    public final class func neverStub(_: Target) -> Moya.StubBehavior {
         return .never
     }
 
-    public final class func ImmediatelyStub(_: Target) -> Moya.StubBehavior {
+    public final class func immediatelyStub(_: Target) -> Moya.StubBehavior {
         return .immediate
     }
 
-    public final class func DelayedStub(_ seconds: TimeInterval) -> (Target) -> Moya.StubBehavior {
+    public final class func delayedStub(_ seconds: TimeInterval) -> (Target) -> Moya.StubBehavior {
         return { _ in return .delayed(seconds: seconds) }
     }
 }

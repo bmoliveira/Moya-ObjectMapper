@@ -25,7 +25,7 @@ public protocol PropertyProtocol: class {
 }
 
 /// Represents an observable property that can be mutated directly.
-public protocol MutablePropertyProtocol: PropertyProtocol, BindingTarget {
+public protocol MutablePropertyProtocol: PropertyProtocol, BindingTargetProtocol {
 	/// The current value of the property.
 	var value: Value { get set }
 }
@@ -513,11 +513,7 @@ public final class Property<Value>: PropertyProtocol {
 		self.sources = sources
 		_value = { atomic.value! }
 		_producer = { producer }
-		_signal = {
-			var extractedSignal: Signal<Value, NoError>!
-			producer.startWithSignal { signal, _ in extractedSignal = signal }
-			return extractedSignal
-		}
+		_signal = { producer.startAndRetrieveSignal() }
 	}
 
 	deinit {

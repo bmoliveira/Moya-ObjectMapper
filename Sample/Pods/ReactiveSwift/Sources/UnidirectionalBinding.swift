@@ -1,3 +1,5 @@
+import Foundation
+import Dispatch
 import enum Result.NoError
 
 precedencegroup BindingPrecedence {
@@ -10,7 +12,7 @@ precedencegroup BindingPrecedence {
 infix operator <~ : BindingPrecedence
 
 /// Describes a target to which can be bound.
-public protocol BindingTarget: class {
+public protocol BindingTargetProtocol: class {
 	associatedtype Value
 
 	/// The lifetime of `self`. The binding operators use this to determine when
@@ -53,7 +55,7 @@ public protocol BindingTarget: class {
 	static func <~ <Source: SignalProtocol>(target: Self, signal: Source) -> Disposable? where Source.Value == Value, Source.Error == NoError
 }
 
-extension BindingTarget {
+extension BindingTargetProtocol {
 	/// Binds a signal to a target, updating the target's value to the latest
 	/// value sent by the signal.
 	///
@@ -170,7 +172,7 @@ extension BindingTarget {
 	}
 }
 
-extension BindingTarget where Value: OptionalProtocol {
+extension BindingTargetProtocol where Value: OptionalProtocol {
 	/// Binds a signal to a target, updating the target's value to the latest
 	/// value sent by the signal.
 	///
@@ -276,3 +278,49 @@ extension BindingTarget where Value: OptionalProtocol {
 		return target <~ property.producer
 	}
 }
+
+/// A binding target that can be used with the `<~` operator.
+public final class BindingTarget<Value>: BindingTargetProtocol {
+	public let lifetime: Lifetime
+	private let setter: (Value) -> Void
+
+	/// Creates a binding target.
+	///
+	/// - parameters:
+	///   - lifetime: The expected lifetime of any bindings towards `self`.
+	///   - setter: The action to consume values.
+	public init(lifetime: Lifetime, setter: @escaping (Value) -> Void) {
+		self.setter = setter
+		self.lifetime = lifetime
+	}
+
+	/// Creates a binding target which consumes values on the specified scheduler.
+	///
+	/// - parameters:
+	///   - scheduler: The scheduler on which the `setter` consumes the values.
+	///   - lifetime: The expected lifetime of any bindings towards `self`.
+	///   - setter: The action to consume values.
+	public convenience init(on scheduler: SchedulerProtocol, lifetime: Lifetime, setter: @escaping (Value) -> Void) {
+		let setter: (Value) -> Void = { value in
+			scheduler.schedule {
+				setter(value)
+			}
+		}
+		self.init(lifetime: lifetime, setter: setter)
+	}
+
+	public func consume(_ value: Value) {
+		setter(value)
+	}
+
+	@discardableResult
+	public static func <~ <Source: SignalProtocol>(target: BindingTarget<Value>, signal: Source) -> Disposable? where Source.Value == Value, Source.Error == NoError {
+		return signal
+			.take(during: target.lifetime)
+			.observeValues { [setter = target.setter] value in
+				setter(value)
+			}
+	}
+}
+
+private let specificKey = DispatchSpecificKey<ObjectIdentifier>()
