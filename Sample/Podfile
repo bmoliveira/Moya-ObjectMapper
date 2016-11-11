@@ -7,9 +7,10 @@ def libraries
   pod 'Moya-ObjectMapper', :path => "../"
   #pod 'Moya-ObjectMapper/ReactiveCocoa', :path => "../"
   pod 'Moya-ObjectMapper/RxSwift', :path => "../"
-  pod 'Moya', :git => 'https://github.com/Moya/Moya'
+  pod 'ObjectMapper', :git => 'https://github.com/Hearst-DD/ObjectMapper'
+  pod 'Moya' #, :git => 'https://github.com/Moya/Moya'
   #pod 'ReactiveSwift', :git => 'https://github.com/ReactiveCocoa/ReactiveSwift'
-  pod 'RxSwift', :git => 'https://github.com/ReactiveX/RxSwift'
+  pod 'RxSwift' #, :git => 'https://github.com/ReactiveX/RxSwift'
 end
 
 # Test Libraries

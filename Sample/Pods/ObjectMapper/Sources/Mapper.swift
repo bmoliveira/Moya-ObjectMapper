@@ -104,7 +104,11 @@ public final class Mapper<N: BaseMappable> {
 				object.mapping(map: map)
 				return object
 			}
-		} else {
+    } else if let klass = N.self as? ImmutableMappable.Type { // Check if object is Mappable
+      if let object = try? klass.init(map: map) as? N {
+        return object
+      }
+    } else {
 			// Ensure BaseMappable is not implemented directly
 			assert(false, "BaseMappable should not be implemented directly. Please implement Mappable, StaticMappable or ImmutableMappable")
 		}

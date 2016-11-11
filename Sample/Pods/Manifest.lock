@@ -1,56 +1,52 @@
 PODS:
   - Alamofire (4.0.1)
-  - Moya (8.0.0-beta.3):
-    - Moya/Core (= 8.0.0-beta.3)
-  - Moya-ObjectMapper (2.0.1):
-    - Moya-ObjectMapper/Core (= 2.0.1)
-  - Moya-ObjectMapper/Core (2.0.1):
-    - Moya
-    - ObjectMapper
-  - Moya-ObjectMapper/RxSwift (2.0.1):
+  - Moya (8.0.0-beta.4):
+    - Moya/Core (= 8.0.0-beta.4)
+  - Moya-ObjectMapper (2.1):
+    - Moya-ObjectMapper/Core (= 2.1)
+  - Moya-ObjectMapper/Core (2.1):
+    - Moya (= 8.0.0-beta.4)
+    - ObjectMapper (= 2.2.1)
+  - Moya-ObjectMapper/RxSwift (2.1):
     - Moya-ObjectMapper/Core
     - Moya/RxSwift
-    - RxSwift
-  - Moya/Core (8.0.0-beta.3):
-    - Alamofire (~> 4.0.0)
-    - Result
-  - Moya/RxSwift (8.0.0-beta.3):
+    - RxSwift (= 3.0.1)
+  - Moya/Core (8.0.0-beta.4):
+    - Alamofire (~> 4.0)
+    - Result (~> 3.0)
+  - Moya/RxSwift (8.0.0-beta.4):
     - Moya/Core
-    - RxSwift
-  - ObjectMapper (2.2.0)
+    - RxSwift (~> 3.0)
+  - ObjectMapper (2.2.1)
   - Result (3.0.0)
-  - RxSwift (3.0.0)
+  - RxSwift (3.0.1)
 
 DEPENDENCIES:
-  - Moya (from `https://github.com/Moya/Moya`)
+  - Moya
   - Moya-ObjectMapper (from `../`)
   - Moya-ObjectMapper/RxSwift (from `../`)
-  - RxSwift (from `https://github.com/ReactiveX/RxSwift`)
+  - ObjectMapper (from `https://github.com/Hearst-DD/ObjectMapper`)
+  - RxSwift
 
 EXTERNAL SOURCES:
-  Moya:
-    :git: https://github.com/Moya/Moya
   Moya-ObjectMapper:
     :path: "../"
-  RxSwift:
-    :git: https://github.com/ReactiveX/RxSwift
+  ObjectMapper:
+    :git: https://github.com/Hearst-DD/ObjectMapper
 
 CHECKOUT OPTIONS:
-  Moya:
-    :commit: da056cf54941eecc9b235c606cdb0cff0cf70ee0
-    :git: https://github.com/Moya/Moya
-  RxSwift:
-    :commit: 3c55a309a24fbe3dbc480431798eec072b633b85
-    :git: https://github.com/ReactiveX/RxSwift
+  ObjectMapper:
+    :commit: b65a937971806b4e074a3533e06f450fd92ee113
+    :git: https://github.com/Hearst-DD/ObjectMapper
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
-  Moya: f83c7f81eaa28cb0151549dfcf1f3fda4440bb50
-  Moya-ObjectMapper: ab4f1197ef83610534f1d4bb3bab5af9bfdd8323
-  ObjectMapper: 4060d739febae11ab0c6af8d786f98667c82e1bd
+  Moya: bad6f72ec40661f09a8cd85ab470226d2795a485
+  Moya-ObjectMapper: c8c7435f5405ee5acd5ea61b6190fdbf5d639f97
+  ObjectMapper: 41e43e1a89f8060ef5ea5d04ba852e269a621d68
   Result: 1b3e431f37cbcd3ad89c6aa9ab0ae55515fae3b6
-  RxSwift: 931443655decc4aec2ff4e4197bf1720c2d49c57
+  RxSwift: af5680055c4ad04480189c52d28385b1029493a6
 
-PODFILE CHECKSUM: 21e07bee67f4d0671309183bb731765a9d226618
+PODFILE CHECKSUM: 9299419ef67b47dd9a0ab9cd611dc44ff80199a2
 
 COCOAPODS: 1.1.1

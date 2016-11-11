@@ -78,18 +78,17 @@ need to include the pre-release versions of RxSwift or ReactiveSwift manually.
 
 ```rb
 pod 'Moya/RxSwift'
-pod 'RxSwift', '3.0.0-beta.1'
-pod 'RxCocoa', '3.0.0-beta.1'
 
 # or
 
 pod 'Moya/ReactiveCocoa'
-pod 'ReactiveSwift', '1.0.0-alpha.1'
+pod 'ReactiveSwift', '1.0.0-alpha.3'
 ```
 
 Then run `pod install`.
 
 ### Carthage
+
 Carthage users can point to this repository and use whichever
 generated framework they'd like, `Moya`, `RxMoya`, or `ReactiveMoya`.
 The full Moya framework is bundled in each of those frameworks;
@@ -117,7 +116,7 @@ provider.request(.zen) { result in
         // this means there was a network failure - either the request
         // wasn't sent (connectivity), or no response was received (server
         // timed out).  If the server responds with a 4xx or 5xx error, that
-        // will be sent as a ".Success"-ful response.
+        // will be sent as a ".success"-ful response.
     }
 }
 ```

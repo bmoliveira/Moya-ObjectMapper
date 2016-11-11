@@ -21,7 +21,7 @@ class ViewController: UITableViewController {
             switch result {
             case let .success(response):
                 do {
-                    let repos: [Repository]? = try response.mapArray(Repository)
+                    let repos: [Repository]? = try response.mapArray(Repository.self)
                     if let repos = repos {
                         // Presumably, you'd parse the JSON into a model object. This is just a demo, so we'll keep it as-is.
                         self.repos = repos

@@ -9,46 +9,44 @@
 import Foundation
 import ObjectMapper
 
-class Owner: Mappable {
+class Owner: ImmutableMappable {
 
-  var id: Int!
-  var organizationsURL: String!
-  var receivedEventsURL: String!
-  var followingURL: String!
-  var login: String!
-  var avatarURL: String!
-  var URL: String!
-  var subscriptionsURL: String!
-  var type: String!
-  var reposURL: String!
-  var htmlURL: String!
-  var eventsURL: String!
-  var siteAdmin: Bool!
-  var starredURL: String!
-  var gistsURL: String!
-  var gravatarId: String!
-  var followersURL: String!
+  let id: Int
+  let organizationsURL: String
+  let receivedEventsURL: String
+  let followingURL: String
+  let login: String
+  let avatarURL: String
+  let URL: String
+  let subscriptionsURL: String
+  let type: String
+  let reposURL: String
+  let htmlURL: String
+  let eventsURL: String
+  let siteAdmin: Bool
+  let starredURL: String
+  let gistsURL: String
+  let gravatarId: String
+  let followersURL: String
 
-  required init?(map: Map) { }
-
-  func mapping(map: Map) {
-    id <- map["id"]
-    organizationsURL <- map["organizations_url"]
-    receivedEventsURL <- map["received_events_url"]
-    followingURL <- map["following_url"]
-    login <- map["login"]
-    avatarURL <- map["avatar_url"]
-    URL <- map["url"]
-    subscriptionsURL <- map["subscriptions_url"]
-    type <- map["type"]
-    reposURL <- map["repos_url"]
-    htmlURL <- map["html_url"]
-    eventsURL <- map["events_url"]
-    siteAdmin <- map["site_admin"]
-    starredURL <- map["starred_url"]
-    gistsURL <- map["gists_url"]
-    gravatarId <- map["gravatar_id"]
-    followersURL <- map["followers_url"]
+  required init(map: Map) throws {
+    id = try map.value("id")
+    organizationsURL = try map.value("organizations_url")
+    receivedEventsURL = try map.value("received_events_url")
+    followingURL = try map.value("following_url")
+    login = try map.value("login")
+    avatarURL = try map.value("avatar_url")
+    URL = try map.value("url")
+    subscriptionsURL = try map.value("subscriptions_url")
+    type = try map.value("type")
+    reposURL = try map.value("repos_url")
+    htmlURL = try map.value("html_url")
+    eventsURL = try map.value("events_url")
+    siteAdmin = try map.value("site_admin")
+    starredURL = try map.value("starred_url")
+    gistsURL = try map.value("gists_url")
+    gravatarId = try map.value("gravatar_id")
+    followersURL = try map.value("followers_url")
   }
 
 }
