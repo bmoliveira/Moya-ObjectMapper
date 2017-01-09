@@ -78,6 +78,11 @@ public extension Map {
 		}
 		return value
 	}
+	
+	/// Returns a RawRepresentable type or throws an error.
+	public func value<T: RawRepresentable>(_ key: String, nested: Bool? = nil, delimiter: String = ".", file: StaticString = #file, function: StaticString = #function, line: UInt = #line) throws -> T {
+		return try self.value(key, nested: nested, delimiter: delimiter, using: EnumTransform(), file: file, function: function, line: line)
+	}
 
 	// MARK: BaseMappable
 
@@ -87,7 +92,7 @@ public extension Map {
 		guard let JSONObject = currentValue else {
 			throw MapError(key: key, currentValue: currentValue, reason: "Found unexpected nil value", file: file, function: function, line: line)
 		}
-		return try Mapper<T>().mapOrFail(JSONObject: JSONObject)
+		return try Mapper<T>(context: context).mapOrFail(JSONObject: JSONObject)
 	}
 
 	// MARK: [BaseMappable]
@@ -99,7 +104,7 @@ public extension Map {
 			throw MapError(key: key, currentValue: currentValue, reason: "Cannot cast to '[Any]'", file: file, function: function, line: line)
 		}
 		return try jsonArray.enumerated().map { i, JSONObject -> T in
-			return try Mapper<T>().mapOrFail(JSONObject: JSONObject)
+			return try Mapper<T>(context: context).mapOrFail(JSONObject: JSONObject)
 		}
 	}
 
@@ -127,7 +132,7 @@ public extension Map {
 		}
 		var value: [String: T] = [:]
 		for (key, json) in jsonDictionary {
-			value[key] = try Mapper<T>().mapOrFail(JSONObject: json)
+			value[key] = try Mapper<T>(context: context).mapOrFail(JSONObject: json)
 		}
 		return value
 	}
@@ -237,7 +242,7 @@ public extension Mapper where N: ImmutableMappable {
 internal extension Mapper where N: BaseMappable {
 
 	internal func mapOrFail(JSON: [String: Any]) throws -> N {
-		let map = Map(mappingType: .fromJSON, JSON: JSON, context: context)
+		let map = Map(mappingType: .fromJSON, JSON: JSON, context: context, shouldIncludeNilValues: shouldIncludeNilValues)
 		
 		// Check if object is ImmutableMappable, if so use ImmutableMappable protocol for mapping
 		if let klass = N.self as? ImmutableMappable.Type,

@@ -9,6 +9,9 @@ internal typealias DataRequest = Alamofire.DataRequest
 
 internal typealias URLRequestConvertible = Alamofire.URLRequestConvertible
 
+/// Represents an HTTP method.
+public typealias Method = Alamofire.HTTPMethod
+
 /// Choice of parameter encoding.
 public typealias ParameterEncoding = Alamofire.ParameterEncoding
 public typealias JSONEncoding = Alamofire.JSONEncoding
@@ -29,15 +32,15 @@ extension Request: RequestType { }
 public final class CancellableToken: Cancellable, CustomDebugStringConvertible {
     let cancelAction: () -> Void
     let request: Request?
-    public fileprivate(set) var cancelled: Bool = false
+    public fileprivate(set) var isCancelled = false
 
     fileprivate var lock: DispatchSemaphore = DispatchSemaphore(value: 1)
 
     public func cancel() {
         _ = lock.wait(timeout: DispatchTime.distantFuture)
         defer { lock.signal() }
-        guard !cancelled else { return }
-        cancelled = true
+        guard !isCancelled else { return }
+        isCancelled = true
         cancelAction()
     }
 
@@ -70,16 +73,16 @@ internal protocol Requestable {
 
 extension DataRequest: Requestable {
     internal func response(queue: DispatchQueue?, completionHandler: @escaping RequestableCompletion) -> Self {
-        return response(queue: queue, completionHandler: { handler  in
+        return response(queue: queue) { handler  in
             completionHandler(handler.response, handler.request, handler.data, handler.error)
-        })
+        }
     }
 }
 
 extension DownloadRequest: Requestable {
     internal func response(queue: DispatchQueue?, completionHandler: @escaping RequestableCompletion) -> Self {
-        return response(queue: queue, completionHandler: { handler  in
+        return response(queue: queue) { handler  in
             completionHandler(handler.response, handler.request, nil, handler.error)
-        })
+        }
     }
 }
