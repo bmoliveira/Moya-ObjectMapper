@@ -101,9 +101,9 @@ GitHubProvider.request(.userRepositories(username))
   .mapArray(Repository)
   .subscribe { event -> Void in
     switch event {
-    case .Next(let repos):
+    case .next(let repos):
       self.repos = repos
-    case .Error(let error):
+    case .error(let error):
       print(error)
     default:
       break
