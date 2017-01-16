@@ -1,0 +1,2 @@
+github "Moya/Moya" ~> 8.0
+github "Hearst-DD/ObjectMapper" ~> 2.2
