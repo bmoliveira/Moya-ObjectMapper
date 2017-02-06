@@ -14,25 +14,17 @@ Due to the fact that most libraries haven't officially released a Swift 3.0 vers
 ## CocoaPods
 
 ```ruby
-pod 'Moya-ObjectMapper', :git => 'https://github.com/ivanbruel/Moya-ObjectMapper'
-pod 'Moya', :git => 'https://github.com/Moya/Moya'
+pod 'Moya-ObjectMapper'
+pod 'Moya'
 ```
 
 The subspec if you want to use the bindings over RxSwift.
 
 ```ruby
-pod 'Moya-ObjectMapper/RxSwift', :git => 'https://github.com/ivanbruel/Moya-ObjectMapper'
-pod 'Moya', :git => 'https://github.com/Moya/Moya'
-pod 'RxSwift', :git => 'https://github.com/ReactiveX/RxSwift'
+pod 'Moya-ObjectMapper/RxSwift'
+pod 'Moya'
+pod 'RxSwift'
 
-```
-
-And the subspec if you want to use the bindings over ReactiveCocoa.
-
-```ruby
-pod 'Moya-ObjectMapper/ReactiveCocoa', :git => 'https://github.com/ivanbruel/Moya-ObjectMapper'
-pod 'Moya', :git => 'https://github.com/Moya/Moya'
-pod 'ReactiveSwift', :git => 'https://github.com/ReactiveCocoa/ReactiveSwift'
 ```
 
 # Usage
