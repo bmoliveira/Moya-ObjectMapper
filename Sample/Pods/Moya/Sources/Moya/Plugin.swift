@@ -8,19 +8,27 @@ import Result
 ///     - hide and show a network activity indicator
 ///     - inject additional information into a request
 public protocol PluginType {
-    /// Called immediately before a request is sent over the network (or stubbed).
-    func willSendRequest(_ request: RequestType, target: TargetType)
+    /// Called to modify a request before sending
+    func prepare(_ request: URLRequest, target: TargetType) -> URLRequest
 
-    // Called after a response has been received, but before the MoyaProvider has invoked its completion handler.
-    func didReceiveResponse(_ result: Result<Moya.Response, Moya.Error>, target: TargetType)
+    /// Called immediately before a request is sent over the network (or stubbed).
+    func willSend(_ request: RequestType, target: TargetType)
+
+    /// Called after a response has been received, but before the MoyaProvider has invoked its completion handler.
+    func didReceive(_ result: Result<Moya.Response, MoyaError>, target: TargetType)
+
+    /// Called to modify a result before completion
+    func process(_ result: Result<Moya.Response, MoyaError>, target: TargetType) -> Result<Moya.Response, MoyaError>
 }
 
 public extension PluginType {
-    func willSendRequest(_ request: RequestType, target: TargetType) { }
-    func didReceiveResponse(_ result: Result<Moya.Response, Moya.Error>, target: TargetType) { }
+    func prepare(_ request: URLRequest, target: TargetType) -> URLRequest { return request }
+    func willSend(_ request: RequestType, target: TargetType) { }
+    func didReceive(_ result: Result<Moya.Response, MoyaError>, target: TargetType) { }
+    func process(_ result: Result<Moya.Response, MoyaError>, target: TargetType) -> Result<Moya.Response, MoyaError> { return result }
 }
 
-/// Request type used by `willSendRequest` plugin function.
+/// Request type used by `willSend` plugin function.
 public protocol RequestType {
 
     // Note:

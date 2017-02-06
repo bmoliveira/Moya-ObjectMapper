@@ -13,17 +13,17 @@ public final class NetworkLoggerPlugin: PluginType {
     fileprivate let responseDataFormatter: ((Data) -> (Data))?
 
     /// If true, also logs response body data.
-    public let verbose: Bool
+    public let isVerbose: Bool
     public let cURL: Bool
 
     public init(verbose: Bool = false, cURL: Bool = false, output: @escaping (_ seperator: String, _ terminator: String, _ items: Any...) -> Void = NetworkLoggerPlugin.reversedPrint, responseDataFormatter: ((Data) -> (Data))? = nil) {
         self.cURL = cURL
-        self.verbose = verbose
+        self.isVerbose = verbose
         self.output = output
         self.responseDataFormatter = responseDataFormatter
     }
 
-    public func willSendRequest(_ request: RequestType, target: TargetType) {
+    public func willSend(_ request: RequestType, target: TargetType) {
         if let request = request as? CustomDebugStringConvertible, cURL {
             output(separator, terminator, request.debugDescription)
             return
@@ -31,7 +31,7 @@ public final class NetworkLoggerPlugin: PluginType {
         outputItems(logNetworkRequest(request.request as URLRequest?))
     }
 
-    public func didReceiveResponse(_ result: Result<Moya.Response, Moya.Error>, target: TargetType) {
+    public func didReceive(_ result: Result<Moya.Response, MoyaError>, target: TargetType) {
         if case .success(let response) = result {
             outputItems(logNetworkResponse(response.response, data: response.data, target: target))
         } else {
@@ -40,7 +40,7 @@ public final class NetworkLoggerPlugin: PluginType {
     }
 
     fileprivate func outputItems(_ items: [String]) {
-        if verbose {
+        if isVerbose {
             items.forEach { output(separator, terminator, $0) }
         } else {
             output(separator, terminator, items)
@@ -78,10 +78,8 @@ private extension NetworkLoggerPlugin {
             output += [format(loggerId, date: date, identifier: "HTTP Request Method", message: httpMethod)]
         }
 
-        if let body = request?.httpBody, verbose == true {
-            if let stringOutput = String(data: body, encoding: .utf8) {
-                output += [format(loggerId, date: date, identifier: "Request Body", message: stringOutput)]
-            }
+        if let body = request?.httpBody, let stringOutput = String(data: body, encoding: .utf8), isVerbose {
+            output += [format(loggerId, date: date, identifier: "Request Body", message: stringOutput)]
         }
 
         return output
@@ -96,10 +94,8 @@ private extension NetworkLoggerPlugin {
 
         output += [format(loggerId, date: date, identifier: "Response", message: response.description)]
 
-        if let data = data, verbose == true {
-            if let stringData = String(data: responseDataFormatter?(data) ?? data, encoding: String.Encoding.utf8) {
-                output += [stringData]
-            }
+        if let data = data, let stringData = String(data: responseDataFormatter?(data) ?? data, encoding: String.Encoding.utf8), isVerbose {
+            output += [stringData]
         }
 
         return output

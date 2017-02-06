@@ -37,9 +37,11 @@ public enum MappingType {
 public final class Mapper<N: BaseMappable> {
 	
 	public var context: MapContext?
+	public var shouldIncludeNilValues = false /// If this is set to true, toJSON output will include null values for any variables that are not set.
 	
-	public init(context: MapContext? = nil){
+	public init(context: MapContext? = nil, shouldIncludeNilValues: Bool = false){
 		self.context = context
+		self.shouldIncludeNilValues = shouldIncludeNilValues
 	}
 	
 	// MARK: Mapping functions that map to an existing object toObject
@@ -65,7 +67,7 @@ public final class Mapper<N: BaseMappable> {
 	/// Usefull for those pesky objects that have crappy designated initializers like NSManagedObject
 	public func map(JSON: [String: Any], toObject object: N) -> N {
 		var mutableObject = object
-		let map = Map(mappingType: .fromJSON, JSON: JSON, toObject: true, context: context)
+		let map = Map(mappingType: .fromJSON, JSON: JSON, toObject: true, context: context, shouldIncludeNilValues: shouldIncludeNilValues)
 		mutableObject.mapping(map: map)
 		return mutableObject
 	}
@@ -92,7 +94,7 @@ public final class Mapper<N: BaseMappable> {
 
 	/// Maps a JSON dictionary to an object that conforms to Mappable
 	public func map(JSON: [String: Any]) -> N? {
-		let map = Map(mappingType: .fromJSON, JSON: JSON, context: context)
+		let map = Map(mappingType: .fromJSON, JSON: JSON, context: context, shouldIncludeNilValues: shouldIncludeNilValues)
 		
 		if let klass = N.self as? StaticMappable.Type { // Check if object is StaticMappable
 			if var object = klass.objectForMapping(map: map) as? N {
@@ -104,11 +106,9 @@ public final class Mapper<N: BaseMappable> {
 				object.mapping(map: map)
 				return object
 			}
-    } else if let klass = N.self as? ImmutableMappable.Type { // Check if object is Mappable
-      if let object = try? klass.init(map: map) as? N {
-        return object
-      }
-    } else {
+		} else if N.self is ImmutableMappable.Type { // Check if object is ImmutableMappable
+			assert(false, "'ImmutableMappable' type requires throwing version of function \(#function)  - use 'try' before \(#function)")
+		} else {
 			// Ensure BaseMappable is not implemented directly
 			assert(false, "BaseMappable should not be implemented directly. Please implement Mappable, StaticMappable or ImmutableMappable")
 		}
@@ -274,7 +274,7 @@ extension Mapper {
 	///Maps an object that conforms to Mappable to a JSON dictionary <String, Any>
 	public func toJSON(_ object: N) -> [String: Any] {
 		var mutableObject = object
-		let map = Map(mappingType: .toJSON, JSON: [:], context: context)
+		let map = Map(mappingType: .toJSON, JSON: [:], context: context, shouldIncludeNilValues: shouldIncludeNilValues)
 		mutableObject.mapping(map: map)
 		return map.JSON
 	}
