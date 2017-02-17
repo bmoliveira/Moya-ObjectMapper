@@ -1,72 +1,69 @@
+//
+//  GitHubAPI.swift
+//  Demo
+//
+//  Created by Gustavo Perdomo on 2/17/17.
+//  Copyright © 2017 Gustavo Perdomo. All rights reserved.
+//
+
 import Foundation
 import Moya
 
-// MARK: - Provider setup
-
-private func JSONResponseDataFormatter(_ data: Data) -> Data {
-  do {
-    let dataAsJSON = try JSONSerialization.jsonObject(with: data)
-    let prettyData =  try JSONSerialization.data(withJSONObject: dataAsJSON, options: .prettyPrinted)
-    return prettyData
-  } catch {
-    return data //fallback to original data if it cant be serialized
-  }
-}
-
-let GitHubProvider = MoyaProvider<GitHub>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
-
-// MARK: - Provider support
-
 private extension String {
-  var urlEscapedString: String {
-    return self.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-  }
+    var URLEscapedString: String {
+        return self.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+    }
 }
 
-public enum GitHub {
-  case zen
-  case userProfile(String)
-  case userRepositories(String)
+enum GitHub {
+    case userProfile(username: String)
+    case repos(username: String)
+    case repo(fullName: String)
+    case issues(repositoryFullName: String)
 }
 
 extension GitHub: TargetType {
-  public var baseURL: URL { return URL(string: "https://api.github.com")! }
-  public var path: String {
-    switch self {
-    case .zen:
-      return "/zen"
-    case .userProfile(let name):
-      return "/users/\(name.urlEscapedString)"
-    case .userRepositories(let name):
-      return "/users/\(name.urlEscapedString)/repos"
+    var baseURL: URL { return URL(string: "https://api.github.com")! }
+    
+    var path: String {
+        switch self {
+        case .repos(let name):
+            return "/users/\(name.URLEscapedString)/repos"
+        case .userProfile(let name):
+            return "/users/\(name.URLEscapedString)"
+        case .repo(let name):
+            return "/repos/\(name)"
+        case .issues(let repositoryName):
+            return "/repos/\(repositoryName)/issues"
+        }
     }
-  }
-  public var method: Moya.Method {
-    return .get
-  }
-  public var parameters: [String: Any]? {
-    switch self {
-    case .userRepositories(_):
-      return ["sort": "pushed"]
-    default:
-      return nil
+    
+    var method: Moya.Method {
+        return .get
     }
-  }
-  public var task: Task {
-    return .request
-  }
-  public var sampleData: Data {
-    switch self {
-    case .zen:
-      return "Half measures are as bad as nothing at all.".data(using: String.Encoding.utf8)!
-    case .userProfile(let name):
-      return "{\"login\": \"\(name)\", \"id\": 100}".data(using: String.Encoding.utf8)!
-    case .userRepositories(_):
-      return "[{\"name\": \"Repo Name\"}]".data(using: String.Encoding.utf8)!
+    
+    var parameters: [String: Any]? {
+        return nil
     }
-  }
-}
-
-public func url(_ route: TargetType) -> String {
-  return route.baseURL.appendingPathComponent(route.path).absoluteString
+    
+    var sampleData: Data {
+        switch self {
+        case .repos(_):
+            return "{{\"id\": \"1\", \"language\": \"Swift\", \"url\": \"https://api.github.com/repos/mjacko/Router\", \"name\": \"Router\"}}}".data(using: .utf8)!
+        case .userProfile(let name):
+            return "{\"login\": \"\(name)\", \"id\": 100}".data(using: .utf8)!
+        case .repo(_):
+            return "{\"id\": \"1\", \"language\": \"Swift\", \"url\": \"https://api.github.com/repos/mjacko/Router\", \"name\": \"Router\"}".data(using: .utf8)!
+        case .issues(_):
+            return "{\"id\": 132942471, \"number\": 405, \"title\": \"Updates example with fix to String extension by changing to Optional\", \"body\": \"Fix it pls.\"}".data(using: .utf8)!
+        }
+    }
+    
+    var task: Task {
+        return .request
+    }
+    
+    var parameterEncoding: ParameterEncoding {
+        return JSONEncoding.default
+    }
 }
