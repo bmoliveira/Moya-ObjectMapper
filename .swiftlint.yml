@@ -1,0 +1,16 @@
+disabled_rules: # rule identifiers to exclude from running
+  - colon
+  - comma
+  - control_statement
+opt_in_rules: # some rules are only opt-in
+  - empty_count
+  - missing_docs
+  # Find all the available rules by running:
+  # swiftlint rules
+included: # paths to include during linting. `--path` is ignored if present.
+  - Source
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+  - Pods
+
+reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)

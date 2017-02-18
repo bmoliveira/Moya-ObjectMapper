@@ -1,5 +1,5 @@
 //
-//  Repository.swift
+//  Issue.swift
 //  Demo
 //
 //  Created by Gustavo Perdomo on 2/17/17.
@@ -9,11 +9,11 @@
 import Foundation
 import ObjectMapper
 
-class Repository: Mappable {
+class Issue: Mappable {
     var identifier: Int!
-    var language: String!
-    var name: String!
-    var fullName: String!
+    var number: Int!
+    var title: String!
+    var body: String!
     
     // MARK: JSON
     required init?(map: Map) {
@@ -24,8 +24,8 @@ class Repository: Mappable {
     
     func mapping(map: Map) {
         identifier <- map["id"]
-        language <- map["language"]
-        name <- map["name"]
-        fullName <- map["full_name"]
+        number <- map["number"]
+        title <- map["title"]
+        body <- map["body"]
     }
 }
