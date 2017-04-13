@@ -8,15 +8,15 @@ import Moya
 extension ObservableType where E == Response {
 
     /// Filters out responses that don't fall within the given range, generating errors when others are encountered.
-    public func filterStatusCodes(_ range: ClosedRange<Int>) -> Observable<E> {
+    public func filter(statusCodes: ClosedRange<Int>) -> Observable<E> {
         return flatMap { response -> Observable<E> in
-            return Observable.just(try response.filterStatusCodes(range))
+            return Observable.just(try response.filter(statusCodes: statusCodes))
         }
     }
 
-    public func filterStatusCode(_ code: Int) -> Observable<E> {
+    public func filter(statusCode: Int) -> Observable<E> {
         return flatMap { response -> Observable<E> in
-            return Observable.just(try response.filterStatusCode(code))
+            return Observable.just(try response.filter(statusCode: statusCode))
         }
     }
 
@@ -32,7 +32,7 @@ extension ObservableType where E == Response {
         }
     }
 
-    /// Maps data received from the signal into a UIImage. If the conversion fails, the signal errors.
+    /// Maps data received from the signal into an Image. If the conversion fails, the signal errors.
     public func mapImage() -> Observable<Image?> {
         return flatMap { response -> Observable<Image?> in
             return Observable.just(try response.mapImage())
@@ -46,10 +46,10 @@ extension ObservableType where E == Response {
         }
     }
 
-    /// Maps data received from the signal into a String. If the conversion fails, the signal errors.
-    public func mapString() -> Observable<String> {
+    /// Maps received data at key path into a String. If the conversion fails, the signal errors.
+    public func mapString(atKeyPath keyPath: String? = nil) -> Observable<String> {
         return flatMap { response -> Observable<String> in
-            return Observable.just(try response.mapString())
+            return Observable.just(try response.mapString(atKeyPath: keyPath))
         }
     }
 }

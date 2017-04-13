@@ -6,16 +6,15 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-import Foundation
-
-class ZipCollectionTypeSink<C: Collection, R, O: ObserverType>
-    : Sink<O> where C.Iterator.Element : ObservableConvertibleType, O.E == R {
+final fileprivate class ZipCollectionTypeSink<C: Collection, O: ObserverType>
+    : Sink<O> where C.Iterator.Element : ObservableConvertibleType {
+    typealias R = O.E
     typealias Parent = ZipCollectionType<C, R>
     typealias SourceElement = C.Iterator.Element.E
     
     private let _parent: Parent
     
-    private let _lock = NSRecursiveLock()
+    private let _lock = RecursiveLock()
     
     // state
     private var _numberOfValues = 0
@@ -49,8 +48,7 @@ class ZipCollectionTypeSink<C: Collection, R, O: ObserverType>
                 }
                 
                 if _numberOfValues < _parent.count {
-                    let numberOfOthersThatAreDone = _numberOfDone - (_isDone[atIndex] ? 1 : 0)
-                    if numberOfOthersThatAreDone == _parent.count - 1 {
+                    if _numberOfDone == _parent.count - 1 {
                         self.forwardOn(.completed)
                         self.dispose()
                     }
@@ -118,7 +116,7 @@ class ZipCollectionTypeSink<C: Collection, R, O: ObserverType>
     }
 }
 
-class ZipCollectionType<C: Collection, R> : Producer<R> where C.Iterator.Element : ObservableConvertibleType {
+final class ZipCollectionType<C: Collection, R> : Producer<R> where C.Iterator.Element : ObservableConvertibleType {
     typealias ResultSelector = ([C.Iterator.Element.E]) throws -> R
     
     let sources: C
