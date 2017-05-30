@@ -24,10 +24,10 @@ public extension Response {
   /// protocol.
   /// If the conversion fails, the signal errors.
   public func mapArray<T: BaseMappable>(_ type: T.Type, context: MapContext? = nil) throws -> [T] {
-	guard let array = try mapJSON() as? [[String : Any]], let objects = Mapper<T>(context: context).mapArray(JSONArray: array) else {
+	guard let array = try mapJSON() as? [[String : Any]] else {
       throw MoyaError.jsonMapping(self)
     }
-    return objects
+    return Mapper<T>(context: context).mapArray(JSONArray: array)
   }
 
 }
