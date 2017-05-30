@@ -6,8 +6,6 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-import Foundation
-
 extension Observable {
     // MARK: create
 
@@ -33,7 +31,7 @@ extension Observable {
     - returns: An observable sequence with no elements.
     */
     public static func empty() -> Observable<E> {
-        return Empty<E>()
+        return EmptyProducer<E>()
     }
 
     // MARK: never
@@ -46,7 +44,7 @@ extension Observable {
     - returns: An observable sequence whose observers will never get called.
     */
     public static func never() -> Observable<E> {
-        return Never()
+        return NeverProducer()
     }
 
     // MARK: just
@@ -86,7 +84,7 @@ extension Observable {
     - returns: The observable sequence that terminates with specified error.
     */
     public static func error(_ error: Swift.Error) -> Observable<E> {
-        return Error(error: error)
+        return ErrorProducer(error: error)
     }
 
     // MARK: of
@@ -199,5 +197,30 @@ extension Observable {
      */
     public static func from<S: Sequence>(_ sequence: S, scheduler: ImmediateSchedulerType = CurrentThreadScheduler.instance) -> Observable<E> where S.Iterator.Element == E {
         return ObservableSequence(elements: sequence, scheduler: scheduler)
+    }
+    
+    /**
+     Converts a optional to an observable sequence.
+
+     - seealso: [from operator on reactivex.io](http://reactivex.io/documentation/operators/from.html)
+
+     - parameter optional: Optional element in the resulting observable sequence.
+     - returns: An observable sequence containing the wrapped value or not from given optional.
+     */
+    public static func from(optional: E?) -> Observable<E> {
+        return ObservableOptional(optional: optional)
+    }
+    
+    /**
+     Converts a optional to an observable sequence.
+     
+     - seealso: [from operator on reactivex.io](http://reactivex.io/documentation/operators/from.html)
+     
+     - parameter optional: Optional element in the resulting observable sequence.
+     - parameter: Scheduler to send the optional element on.
+     - returns: An observable sequence containing the wrapped value or not from given optional.
+     */
+    public static func from(optional: E?, scheduler: ImmediateSchedulerType) -> Observable<E> {
+        return ObservableOptionalScheduled(optional: optional, scheduler: scheduler)
     }
 }

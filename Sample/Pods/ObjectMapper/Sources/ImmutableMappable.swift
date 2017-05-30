@@ -78,6 +78,11 @@ public extension Map {
 		}
 		return value
 	}
+	
+	/// Returns a RawRepresentable type or throws an error.
+	public func value<T: RawRepresentable>(_ key: String, nested: Bool? = nil, delimiter: String = ".", file: StaticString = #file, function: StaticString = #function, line: UInt = #line) throws -> T {
+		return try self.value(key, nested: nested, delimiter: delimiter, using: EnumTransform(), file: file, function: function, line: line)
+	}
 
 	// MARK: BaseMappable
 
@@ -87,7 +92,7 @@ public extension Map {
 		guard let JSONObject = currentValue else {
 			throw MapError(key: key, currentValue: currentValue, reason: "Found unexpected nil value", file: file, function: function, line: line)
 		}
-		return try Mapper<T>().mapOrFail(JSONObject: JSONObject)
+		return try Mapper<T>(context: context).mapOrFail(JSONObject: JSONObject)
 	}
 
 	// MARK: [BaseMappable]
@@ -99,7 +104,7 @@ public extension Map {
 			throw MapError(key: key, currentValue: currentValue, reason: "Cannot cast to '[Any]'", file: file, function: function, line: line)
 		}
 		return try jsonArray.enumerated().map { i, JSONObject -> T in
-			return try Mapper<T>().mapOrFail(JSONObject: JSONObject)
+			return try Mapper<T>(context: context).mapOrFail(JSONObject: JSONObject)
 		}
 	}
 
@@ -121,19 +126,21 @@ public extension Map {
 
 	/// Returns a `[String: BaseMappable]` or throws an error.
 	public func value<T: BaseMappable>(_ key: String, nested: Bool? = nil, delimiter: String = ".", file: StaticString = #file, function: StaticString = #function, line: UInt = #line) throws -> [String: T] {
+		
 		let currentValue = self.currentValue(for: key, nested: nested, delimiter: delimiter)
 		guard let jsonDictionary = currentValue as? [String: Any] else {
 			throw MapError(key: key, currentValue: currentValue, reason: "Cannot cast to '[String: Any]'", file: file, function: function, line: line)
 		}
 		var value: [String: T] = [:]
 		for (key, json) in jsonDictionary {
-			value[key] = try Mapper<T>().mapOrFail(JSONObject: json)
+			value[key] = try Mapper<T>(context: context).mapOrFail(JSONObject: json)
 		}
 		return value
 	}
 
 	/// Returns a `[String: BaseMappable]` using transform or throws an error.
 	public func value<Transform: TransformType>(_ key: String, nested: Bool? = nil, delimiter: String = ".", using transform: Transform, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) throws -> [String: Transform.Object] {
+		
 		let currentValue = self.currentValue(for: key, nested: nested, delimiter: delimiter)
 		guard let jsonDictionary = currentValue as? [String: Any] else {
 			throw MapError(key: key, currentValue: currentValue, reason: "Cannot cast to '[String: Any]'", file: file, function: function, line: line)
@@ -147,23 +154,56 @@ public extension Map {
 		}
 		return value
 	}
-
+	
+	// MARK: [[BaseMappable]]
+	/// Returns a `[[BaseMappable]]` or throws an error.
+	public func value<T: BaseMappable>(_ key: String, nested: Bool? = nil, delimiter: String = ".", file: StaticString = #file, function: StaticString = #function, line: UInt = #line) throws -> [[T]] {
+		
+		let currentValue = self.currentValue(for: key, nested: nested, delimiter: delimiter)
+		guard let json2DArray = currentValue as? [[Any]] else {
+			throw MapError(key: key, currentValue: currentValue, reason: "Cannot cast to '[[Any]]'", file: file, function: function, line: line)
+		}
+		return try json2DArray.map { jsonArray in
+			try jsonArray.map { jsonObject -> T in
+				return try Mapper<T>(context: context).mapOrFail(JSONObject: jsonObject)
+			}
+		}
+	}
+	
+	/// Returns a `[[BaseMappable]]` using transform or throws an error.
+	public func value<Transform: TransformType>(_ key: String, nested: Bool? = nil, delimiter: String = ".", using transform: Transform, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) throws -> [[Transform.Object]] {
+		
+		let currentValue = self.currentValue(for: key, nested: nested, delimiter: delimiter)
+		guard let json2DArray = currentValue as? [[Any]] else {
+			throw MapError(key: key, currentValue: currentValue, reason: "Cannot cast to '[[Any]]'",
+			               file: file, function: function, line: line)
+		}
+		return try json2DArray.enumerated().map { i, jsonArray in
+			try jsonArray.enumerated().map { j, json -> Transform.Object in
+				guard let object = transform.transformFromJSON(json) else {
+					throw MapError(key: "\(key)[\(i)][\(j)]", currentValue: json, reason: "Cannot transform to '\(Transform.Object.self)' using \(transform)", file: file, function: function, line: line)
+				}
+				return object
+			}
+		}
+	}
+	
 }
 
 public extension Mapper where N: ImmutableMappable {
-
+	
 	public func map(JSON: [String: Any]) throws -> N {
 		return try self.mapOrFail(JSON: JSON)
 	}
-
+	
 	public func map(JSONString: String) throws -> N {
 		return try mapOrFail(JSONString: JSONString)
 	}
-
+	
 	public func map(JSONObject: Any) throws -> N {
 		return try mapOrFail(JSONObject: JSONObject)
 	}
-
+	
 	// MARK: Array mapping functions
 	
 	public func mapArray(JSONArray: [[String: Any]]) throws -> [N] {
@@ -237,7 +277,7 @@ public extension Mapper where N: ImmutableMappable {
 internal extension Mapper where N: BaseMappable {
 
 	internal func mapOrFail(JSON: [String: Any]) throws -> N {
-		let map = Map(mappingType: .fromJSON, JSON: JSON, context: context)
+		let map = Map(mappingType: .fromJSON, JSON: JSON, context: context, shouldIncludeNilValues: shouldIncludeNilValues)
 		
 		// Check if object is ImmutableMappable, if so use ImmutableMappable protocol for mapping
 		if let klass = N.self as? ImmutableMappable.Type,
