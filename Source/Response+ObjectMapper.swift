@@ -27,7 +27,12 @@ public extension Response {
 	guard let array = try mapJSON() as? [[String : Any]] else {
       throw MoyaError.jsonMapping(self)
     }
-    return Mapper<T>(context: context).mapArray(JSONArray: array)
+	
+	guard let arrayOfMappableObjects = Mapper<T>(context: context).mapArray(JSONArray: array) else {
+		throw MoyaError.arrayMapping(self)
+	}
+	
+    return arrayOfMappableObjects
   }
 
 }

@@ -7,6 +7,9 @@ public enum MoyaError: Swift.Error {
 
     /// Indicates a response failed to map to a JSON structure.
     case jsonMapping(Response)
+	
+	/// Indicates a response failed to map to an array of Mappable objects.
+	case arrayMapping(Response)
 
     /// Indicates a response failed to map to a String.
     case stringMapping(Response)
@@ -27,6 +30,7 @@ public extension MoyaError {
         switch self {
         case .imageMapping(let response): return response
         case .jsonMapping(let response): return response
+		case .arrayMapping(let response): return response
         case .stringMapping(let response): return response
         case .statusCode(let response): return response
         case .underlying: return nil
@@ -44,6 +48,8 @@ extension MoyaError: LocalizedError {
             return "Failed to map data to an Image."
         case .jsonMapping:
             return "Failed to map data to JSON."
+		case .arrayMapping:
+			return "Failed to map data to an array of Mappable objects."
         case .stringMapping:
             return "Failed to map data to a String."
         case .statusCode:
