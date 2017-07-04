@@ -66,7 +66,7 @@ GitHubProvider.request(.userRepositories(username), completion: { result in
     switch result {
     case let .success(response):
         do {
-            if let repos = try response.mapArray(Repository) {
+            if let repos = try response.mapArray(Repository.self) {
               self.repos = repos
             } else {
               success = false
@@ -90,7 +90,7 @@ GitHubProvider.request(.userRepositories(username), completion: { result in
 
 ```swift
 GitHubProvider.request(.userRepositories(username))
-  .mapArray(Repository)
+  .mapArray(Repository.self)
   .subscribe { event -> Void in
     switch event {
     case .next(let repos):
@@ -101,6 +101,21 @@ GitHubProvider.request(.userRepositories(username))
       break
     }
   }.addDisposableTo(disposeBag)
+```
+
+## 3. With ReactiveSwift
+
+```swift
+GitHubProvider.request(.userRepositories(username))
+  .mapArray(Repository.self)
+  .startWithResult { result in
+    switch result {
+    case .next(let repos):
+      self.repos = repos
+    case .failure(let error):
+      print(error)
+    }
+  }
 ```
 
 # Contributing
