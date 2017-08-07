@@ -13,6 +13,20 @@ extension SignalProducerProtocol where Value == Moya.Response, Error == MoyaErro
         }
     }
 
+    /// Maps data received from the signal into an optional object which implements the Mappable protocol.
+    /// If the conversion fails, the signal errors. Value is nil if status code 204 is received.
+    public func mapObject<T: BaseMappable>(_ type: T.Type, context: MapContext? = nil) -> SignalProducer<T?, Error> {
+        return producer.flatMap(.latest) { response -> SignalProducer<T?, Error> in
+            return unwrapThrowable { try response.mapObject(T.self, context: context) }
+        }.flatMapError { error -> SignalProducer<T?, Error> in
+            if error.response?.statusCode == 204 {
+                return SignalProducer(value: nil)
+            } else {
+                return SignalProducer(error: error)
+            }
+        }
+    }
+
     /// Maps data received from the signal into an array of objects which implement the Mappable
     /// protocol.
     /// If the conversion fails, the signal errors.
