@@ -1,6 +1,6 @@
 {
   "name": "Moya-ObjectMapper",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "summary": "ObjectMapper bindings for Moya",
   "description": "[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper) bindings for\n[Moya](https://github.com/Moya/Moya) for easier JSON serialization.\nIncludes [RxSwift](https://github.com/ReactiveX/RxSwift/) bindings as well.\nInstructions on how to use it are in\n[the README](https://github.com/ivanbruel/Moya-ObjectMapper).",
   "homepage": "https://github.com/ivanbruel/Moya-ObjectMapper",
@@ -20,7 +20,7 @@
   },
   "source": {
     "git": "https://github.com/ivanbruel/Moya-ObjectMapper.git",
-    "tag": "2.3.1"
+    "tag": "2.3.2"
   },
   "default_subspecs": "Core",
   "subspecs": [

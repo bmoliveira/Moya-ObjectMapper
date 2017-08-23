@@ -7,18 +7,18 @@ def libraries
   pod 'Moya-ObjectMapper', :path => "../"
   #pod 'Moya-ObjectMapper/ReactiveCocoa', :path => "../"
   pod 'Moya-ObjectMapper/RxSwift', :path => "../"
-  pod 'ObjectMapper', :git => 'https://github.com/Hearst-DD/ObjectMapper'
-  pod 'Moya' #, :git => 'https://github.com/Moya/Moya'
-  #pod 'ReactiveSwift', :git => 'https://github.com/ReactiveCocoa/ReactiveSwift'
-  pod 'RxSwift' #, :git => 'https://github.com/ReactiveX/RxSwift'
+  pod 'ObjectMapper', '~> 2.2'
+  pod 'Moya', '~> 8.0'
+  pod 'ReactiveSwift', '~> 2.0'
+  pod 'RxSwift', '~> 3.4'
 end
 
 # Test Libraries
-def test_pods
-  pod 'Quick'
-  pod 'Nimble'
-  pod 'OHHTTPStubs'
-end
+#def test_pods
+#  pod 'Quick'
+#  pod 'Nimble'
+#  pod 'OHHTTPStubs'
+#end
 
 target 'Demo' do
   platform :ios, '9.0'
