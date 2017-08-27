@@ -29,7 +29,7 @@
       "source_files": "Source/*.swift",
       "dependencies": {
         "Moya": [
-          "~> 8.0"
+
         ],
         "ObjectMapper": [
           "~> 2.2"
@@ -49,6 +49,21 @@
         ],
         "RxSwift": [
           "~> 3.1"
+        ]
+      }
+    },
+    {
+      "name": "ReactiveSwift",
+      "source_files": "Source/ReactiveSwift/*.swift",
+      "dependencies": {
+        "Moya/ReactiveSwift": [
+          "~> 9.0.0-alpha.1"
+        ],
+        "Moya-ObjectMapper/Core": [
+
+        ],
+        "ReactiveSwift": [
+          "~> 2.0"
         ]
       }
     }
