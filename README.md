@@ -5,7 +5,7 @@ Moya-ObjectMapper
 
 [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper) bindings for
 [Moya](https://github.com/Moya/Moya) for easier JSON serialization.
-Includes [RxSwift](https://github.com/ReactiveX/RxSwift/) bindings as well.
+Includes [RxSwift](https://github.com/ReactiveX/RxSwift/) and [ReactiveSwift](https://github.com/ReactiveCocoa/ReactiveSwift/) bindings as well.
 
 # Installation
 
