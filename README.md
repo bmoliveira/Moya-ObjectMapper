@@ -5,7 +5,7 @@ Moya-ObjectMapper
 
 [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper) bindings for
 [Moya](https://github.com/Moya/Moya) for easier JSON serialization.
-Includes [RxSwift](https://github.com/ReactiveX/RxSwift/) bindings as well.
+Includes [RxSwift](https://github.com/ReactiveX/RxSwift/) and [ReactiveSwift](https://github.com/ReactiveCocoa/ReactiveSwift/) bindings as well.
 
 # Installation
 
@@ -24,6 +24,15 @@ The subspec if you want to use the bindings over RxSwift.
 pod 'Moya-ObjectMapper/RxSwift'
 pod 'Moya'
 pod 'RxSwift'
+
+```
+
+The subspec if you want to use the bindings over ReactiveSwift.
+
+```ruby
+pod 'Moya-ObjectMapper/ReactiveSwift'
+pod 'Moya'
+pod 'ReactiveSwift'
 
 ```
 
@@ -54,7 +63,7 @@ struct Repository: Mappable {
 }
 ```
 
-## 1. Without RxSwift
+## 1. Without RxSwift/ReactiveSwift
 
 
 ```swift
@@ -101,6 +110,23 @@ GitHubProvider.request(.userRepositories(username))
       break
     }
   }.addDisposableTo(disposeBag)
+```
+
+## 3. With ReactiveSwift
+
+```swift
+GitHubProvider.request(.userRepositories(username))
+  .mapArray(Repository.self)
+  .start() { event -> Void in
+    switch event {
+    case .value(let repos):
+      self.repos = repos
+    case .failed(let error):
+      print(error)
+    default:
+      break
+    }
+  }
 ```
 
 # Contributing
