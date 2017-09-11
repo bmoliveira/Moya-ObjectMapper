@@ -15,16 +15,18 @@ Due to the fact that most libraries haven't officially released a Swift 3.0 vers
 
 ```ruby
 pod 'Moya-ObjectMapper'
-pod 'Moya'
 ```
 
 The subspec if you want to use the bindings over RxSwift.
 
 ```ruby
 pod 'Moya-ObjectMapper/RxSwift'
-pod 'Moya'
-pod 'RxSwift'
+```
 
+The subspec if you want to use the bindings over ReactiveSwift.
+
+```ruby
+pod 'Moya-ObjectMapper/ReactiveSwift'
 ```
 
 # Usage
@@ -54,7 +56,7 @@ struct Repository: Mappable {
 }
 ```
 
-## 1. Without RxSwift
+## 1. Without RxSwift and ReactiveSwift
 
 
 ```swift
@@ -90,17 +92,33 @@ GitHubProvider.request(.userRepositories(username), completion: { result in
 
 ```swift
 GitHubProvider.request(.userRepositories(username))
-  .mapArray(Repository)
+  .mapArray(Repository.self)
   .subscribe { event -> Void in
     switch event {
     case .next(let repos):
       self.repos = repos
     case .error(let error):
       print(error)
-    default:
-      break
+    default: break
     }
   }.addDisposableTo(disposeBag)
+```
+
+
+## 2. With ReactiveSwift
+
+```swift
+GitHubProvider.request(.userRepositories(username))
+  .mapArray(Repository.self)
+  .start { event in
+    switch event {
+    case .value(let repos):
+      self.repos = repos
+    case .failed(let error):
+      print(error)
+    default: break
+    }
+  }
 ```
 
 # Contributing
