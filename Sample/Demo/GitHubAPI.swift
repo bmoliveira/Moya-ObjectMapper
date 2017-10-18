@@ -44,16 +44,13 @@ extension GitHub: TargetType {
   public var method: Moya.Method {
     return .get
   }
-  public var parameters: [String: Any]? {
+  public var task: Task {
     switch self {
     case .userRepositories(_):
-      return ["sort": "pushed"]
+        return Task.requestParameters(parameters: ["sort": "pushed"], encoding: URLEncoding.default)
     default:
-      return nil
+        return Task.requestPlain
     }
-  }
-  public var task: Task {
-    return .request
   }
   public var sampleData: Data {
     switch self {
@@ -64,6 +61,9 @@ extension GitHub: TargetType {
     case .userRepositories(_):
       return "[{\"name\": \"Repo Name\"}]".data(using: String.Encoding.utf8)!
     }
+  }
+  public var headers: [String: String]? {
+    return nil
   }
 }
 

@@ -33,10 +33,7 @@ class ViewController: UITableViewController {
                 }
                 self.tableView.reloadData()
             case let .failure(error):
-                guard let error = error as? CustomStringConvertible else {
-                    break
-                }
-                message = error.description
+                message = (error as CustomStringConvertible).description
                 success = false
             }
             

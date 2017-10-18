@@ -1,6 +1,6 @@
 {
   "name": "ObjectMapper",
-  "version": "2.2.5",
+  "version": "3.0.0",
   "license": "MIT",
   "summary": "JSON Object mapping written in Swift",
   "homepage": "https://github.com/Hearst-DD/ObjectMapper",
@@ -9,7 +9,7 @@
   },
   "source": {
     "git": "https://github.com/Hearst-DD/ObjectMapper.git",
-    "tag": "2.2.5"
+    "tag": "3.0.0"
   },
   "platforms": {
     "watchos": "2.0",
@@ -18,8 +18,8 @@
     "tvos": "9.0"
   },
   "pod_target_xcconfig": {
-    "SWIFT_VERSION": "3.0"
+    "SWIFT_VERSION": "4.0"
   },
-  "requires_arc": "true",
+  "requires_arc": true,
   "source_files": "Sources/**/*.swift"
 }
