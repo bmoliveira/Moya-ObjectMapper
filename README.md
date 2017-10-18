@@ -1,7 +1,7 @@
 Moya-ObjectMapper
 ============
 [![CocoaPods](https://img.shields.io/cocoapods/v/Moya-ObjectMapper.svg)](https://github.com/ivanbruel/Moya-ObjectMapper)
-![Swift 3.0.x](https://img.shields.io/badge/Swift-3.0.x-orange.svg)
+![Swift 4.0.x](https://img.shields.io/badge/Swift-4.0.x-orange.svg)
 
 [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper) bindings for
 [Moya](https://github.com/Moya/Moya) for easier JSON serialization.

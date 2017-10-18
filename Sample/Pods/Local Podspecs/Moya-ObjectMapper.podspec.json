@@ -57,7 +57,7 @@
       "source_files": "Source/ReactiveSwift/*.swift",
       "dependencies": {
         "Moya/ReactiveSwift": [
-          "~> 10.0.0-beta.1"
+
         ],
         "Moya-ObjectMapper/Core": [
 
