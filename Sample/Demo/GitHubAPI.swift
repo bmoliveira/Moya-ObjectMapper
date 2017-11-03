@@ -30,6 +30,7 @@ public enum GitHub {
 }
 
 extension GitHub: TargetType {
+    
   public var baseURL: URL { return URL(string: "https://api.github.com")! }
   public var path: String {
     switch self {
@@ -53,8 +54,11 @@ extension GitHub: TargetType {
     }
   }
   public var task: Task {
-    return .request
+    return Task.requestPlain
   }
+  public var headers: [String : String]? {
+    return nil
+  }    
   public var sampleData: Data {
     switch self {
     case .zen:
