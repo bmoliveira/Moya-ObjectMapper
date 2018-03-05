@@ -2,15 +2,15 @@ PODS:
   - Alamofire (4.7.0)
   - Moya (11.0.1):
     - Moya/Core (= 11.0.1)
-  - Moya-ObjectMapper (2.5):
-    - Moya-ObjectMapper/Core (= 2.5)
-  - Moya-ObjectMapper/Core (2.5):
+  - Moya-ObjectMapper (2.5.1):
+    - Moya-ObjectMapper/Core (= 2.5.1)
+  - Moya-ObjectMapper/Core (2.5.1):
     - Moya (~> 11.0.0)
     - ObjectMapper (~> 3.1.0)
-  - Moya-ObjectMapper/RxSwift (2.5):
+  - Moya-ObjectMapper/RxSwift (2.5.1):
     - Moya-ObjectMapper/Core
     - Moya/RxSwift
-    - RxSwift (~> 4.0.0)
+    - RxSwift (~> 4.1)
   - Moya/Core (11.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
@@ -19,7 +19,7 @@ PODS:
     - RxSwift (~> 4.0)
   - ObjectMapper (3.1.0)
   - Result (3.2.4)
-  - RxSwift (4.0.0)
+  - RxSwift (4.1.2)
 
 DEPENDENCIES:
   - Moya
@@ -42,10 +42,10 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
   Moya: 3d594ada51a21cc02b18739ab578a1984f900c8a
-  Moya-ObjectMapper: a454dd44fa782e9131002fef615a39302dc34844
+  Moya-ObjectMapper: 0611a848349536134f86e7885f6825963e33b5f6
   ObjectMapper: 9a4b0d34a264821f26a0f431d79fd48a1f69862c
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
-  RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
 
 PODFILE CHECKSUM: 9299419ef67b47dd9a0ab9cd611dc44ff80199a2
 
