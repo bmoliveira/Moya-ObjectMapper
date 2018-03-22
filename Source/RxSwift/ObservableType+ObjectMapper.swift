@@ -18,7 +18,7 @@ public extension ObservableType where E == Response {
   /// If the conversion fails, the signal errors.
 	public func mapObject<T: BaseMappable>(_ type: T.Type, context: MapContext? = nil) -> Observable<T> {
     return flatMap { response -> Observable<T> in
-			return Observable.just(try response.mapObject(T.self, context: context))
+			return Observable.just(try response.mapObject(type, context: context))
     }
   }
 
@@ -27,7 +27,7 @@ public extension ObservableType where E == Response {
   /// If the conversion fails, the signal errors.
 	public func mapArray<T: BaseMappable>(_ type: T.Type, context: MapContext? = nil) -> Observable<[T]> {
     return flatMap { response -> Observable<[T]> in
-			return Observable.just(try response.mapArray(T.self, context: context))
+			return Observable.just(try response.mapArray(type, context: context))
     }
   }
 }
@@ -41,7 +41,7 @@ public extension ObservableType where E == Response {
   /// If the conversion fails, the signal errors.
   public func mapObject<T: ImmutableMappable>(_ type: T.Type, context: MapContext? = nil) -> Observable<T> {
     return flatMap { response -> Observable<T> in
-			return Observable.just(try response.mapObject(T.self, context: context))
+			return Observable.just(try response.mapObject(type, context: context))
     }
   }
 
@@ -50,7 +50,7 @@ public extension ObservableType where E == Response {
   /// If the conversion fails, the signal errors.
   public func mapArray<T: ImmutableMappable>(_ type: T.Type, context: MapContext? = nil) -> Observable<[T]> {
     return flatMap { response -> Observable<[T]> in
-			return Observable.just(try response.mapArray(T.self, context: context))
+			return Observable.just(try response.mapArray(type, context: context))
     }
   }
 }
