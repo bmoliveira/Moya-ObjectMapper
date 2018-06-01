@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   [the README](https://github.com/bmoliveira/Moya-ObjectMapper).
   EOS
   s.homepage     = "https://github.com/bmoliveira/Moya-ObjectMapper"
-  s.license      = { :type => "MIT", :file => "License" }
+  s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "Ivan Bruel" => "ivan.bruel@gmail.com" }
   s.social_media_url   = "http://twitter.com/ivanbruel"
   s.ios.deployment_target = '8.0'
