@@ -1,25 +1,25 @@
 PODS:
-  - Alamofire (4.5.1)
-  - Moya (10.0.0):
-    - Moya/Core (= 10.0.0)
-  - Moya-ObjectMapper (2.4.2):
-    - Moya-ObjectMapper/Core (= 2.4.2)
-  - Moya-ObjectMapper/Core (2.4.2):
-    - Moya (~> 10.0.0)
-    - ObjectMapper (~> 3.0.0)
-  - Moya-ObjectMapper/RxSwift (2.4.2):
+  - Alamofire (4.7.0)
+  - Moya (11.0.1):
+    - Moya/Core (= 11.0.1)
+  - Moya-ObjectMapper (2.5.1):
+    - Moya-ObjectMapper/Core (= 2.5.1)
+  - Moya-ObjectMapper/Core (2.5.1):
+    - Moya (~> 11.0.0)
+    - ObjectMapper (~> 3.1.0)
+  - Moya-ObjectMapper/RxSwift (2.5.1):
     - Moya-ObjectMapper/Core
     - Moya/RxSwift
-    - RxSwift (~> 4.0.0)
-  - Moya/Core (10.0.0):
+    - RxSwift (~> 4.1)
+  - Moya/Core (11.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
-  - Moya/RxSwift (10.0.0):
+  - Moya/RxSwift (11.0.1):
     - Moya/Core
     - RxSwift (~> 4.0)
-  - ObjectMapper (3.0.0)
+  - ObjectMapper (3.1.0)
   - Result (3.2.4)
-  - RxSwift (4.0.0)
+  - RxSwift (4.1.2)
 
 DEPENDENCIES:
   - Moya
@@ -36,17 +36,17 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ObjectMapper:
-    :commit: 551395ac04ffcfa4cd5accd1d4338d0f10c2fc80
+    :commit: 883a6f1d53e59b2b8bccf0fa49fa07d8b0a6b6e2
     :git: https://github.com/Hearst-DD/ObjectMapper
 
 SPEC CHECKSUMS:
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
-  Moya: adb58b0f4e58430db43cc6e2f6ebab1836501186
-  Moya-ObjectMapper: 1b8a4361f56ada1079461dfd7963ff1a5ae30ff9
-  ObjectMapper: 739e5530df22248823f6cc7ed9e016ebf2c26a27
+  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  Moya: 3d594ada51a21cc02b18739ab578a1984f900c8a
+  Moya-ObjectMapper: 0611a848349536134f86e7885f6825963e33b5f6
+  ObjectMapper: 9a4b0d34a264821f26a0f431d79fd48a1f69862c
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
-  RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
 
 PODFILE CHECKSUM: 9299419ef67b47dd9a0ab9cd611dc44ff80199a2
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.4.0
