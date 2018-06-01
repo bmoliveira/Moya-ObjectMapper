@@ -33,10 +33,10 @@ class ViewController: UITableViewController {
                 }
                 self.tableView.reloadData()
             case let .failure(error):
-                guard let error = error as? CustomStringConvertible else {
+                guard let description = error.errorDescription else {
                     break
                 }
-                message = error.description
+                message = description
                 success = false
             }
             
@@ -101,7 +101,7 @@ class ViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
 
         let repo = repos[(indexPath as NSIndexPath).row]
-        (cell.textLabel as UILabel!).text = repo.name
+        cell.textLabel?.text = repo.name
         return cell
     }
 }

@@ -1,9 +1,9 @@
 {
   "name": "Moya-ObjectMapper",
-  "version": "2.5.1",
+  "version": "2.6",
   "summary": "ObjectMapper bindings for Moya",
-  "description": "[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper) bindings for\n[Moya](https://github.com/Moya/Moya) for easier JSON serialization.\nIncludes [RxSwift](https://github.com/ReactiveX/RxSwift/) bindings as well.\nInstructions on how to use it are in\n[the README](https://github.com/ivanbruel/Moya-ObjectMapper).",
-  "homepage": "https://github.com/ivanbruel/Moya-ObjectMapper",
+  "description": "[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper) bindings for\n[Moya](https://github.com/Moya/Moya) for easier JSON serialization.\nIncludes [RxSwift](https://github.com/ReactiveX/RxSwift/) bindings as well.\nInstructions on how to use it are in\n[the README](https://github.com/bmoliveira/Moya-ObjectMapper).",
+  "homepage": "https://github.com/bmoliveira/Moya-ObjectMapper",
   "license": {
     "type": "MIT",
     "file": "License"
@@ -19,8 +19,8 @@
     "tvos": "9.0"
   },
   "source": {
-    "git": "https://github.com/ivanbruel/Moya-ObjectMapper.git",
-    "tag": "2.5.1"
+    "git": "https://github.com/bmoliveira/Moya-ObjectMapper.git",
+    "tag": "2.6"
   },
   "default_subspecs": "Core",
   "subspecs": [
@@ -29,10 +29,10 @@
       "source_files": "Source/*.swift",
       "dependencies": {
         "Moya": [
-          "~> 11.0.0"
+          "~> 11"
         ],
         "ObjectMapper": [
-          "~> 3.1.0"
+          "~> 3.2"
         ]
       },
       "frameworks": "Foundation"
@@ -41,9 +41,6 @@
       "name": "RxSwift",
       "source_files": "Source/RxSwift/*.swift",
       "dependencies": {
-        "Moya/RxSwift": [
-
-        ],
         "Moya-ObjectMapper/Core": [
 
         ],
@@ -56,14 +53,14 @@
       "name": "ReactiveSwift",
       "source_files": "Source/ReactiveSwift/*.swift",
       "dependencies": {
-        "Moya/ReactiveSwift": [
-
-        ],
         "Moya-ObjectMapper/Core": [
 
         ],
+        "Moya/ReactiveSwift": [
+          "11"
+        ],
         "ReactiveSwift": [
-
+          "~> 3"
         ]
       }
     }
