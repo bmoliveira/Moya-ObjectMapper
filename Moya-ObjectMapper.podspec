@@ -1,15 +1,15 @@
 Pod::Spec.new do |s|
   s.name         = "Moya-ObjectMapper"
-  s.version      = "2.5.1"
+  s.version      = "2.6"
   s.summary      = "ObjectMapper bindings for Moya"
   s.description  = <<-EOS
   [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper) bindings for
   [Moya](https://github.com/Moya/Moya) for easier JSON serialization.
   Includes [RxSwift](https://github.com/ReactiveX/RxSwift/) bindings as well.
   Instructions on how to use it are in
-  [the README](https://github.com/ivanbruel/Moya-ObjectMapper).
+  [the README](https://github.com/bmoliveira/Moya-ObjectMapper).
   EOS
-  s.homepage     = "https://github.com/ivanbruel/Moya-ObjectMapper"
+  s.homepage     = "https://github.com/bmoliveira/Moya-ObjectMapper"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "Ivan Bruel" => "ivan.bruel@gmail.com" }
   s.social_media_url   = "http://twitter.com/ivanbruel"
@@ -17,13 +17,13 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.10'
   s.watchos.deployment_target = '2.0'
   s.tvos.deployment_target = '9.0'
-  s.source       = { :git => "https://github.com/ivanbruel/Moya-ObjectMapper.git", :tag => s.version }
+  s.source       = { :git => "https://github.com/bmoliveira/Moya-ObjectMapper.git", :tag => s.version }
   s.default_subspec = "Core"
 
   s.subspec "Core" do |ss|
     ss.source_files  = "Source/*.swift"
-    ss.dependency "Moya", '~> 11.0.0'
-    ss.dependency "ObjectMapper", '~> 3.1.0'
+    ss.dependency "Moya", '~> 11'
+    ss.dependency "ObjectMapper", '~> 3.2'
     ss.framework  = "Foundation"
   end
 
@@ -35,9 +35,9 @@ Pod::Spec.new do |s|
 
   s.subspec "ReactiveSwift" do |ss|
     ss.source_files = "Source/ReactiveSwift/*.swift"
-     ss.dependency "Moya/ReactiveSwift"
-     ss.dependency "Moya-ObjectMapper/Core"
-     ss.dependency "ReactiveSwift"
+    ss.dependency "Moya-ObjectMapper/Core" 
+    ss.dependency "Moya/ReactiveSwift", '11'
+    ss.dependency "ReactiveSwift", "~> 3"
    end
 
 end
