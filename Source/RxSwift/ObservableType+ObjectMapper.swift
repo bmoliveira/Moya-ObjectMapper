@@ -30,6 +30,24 @@ public extension ObservableType where E == Response {
 			return Observable.just(try response.mapArray(type, context: context))
     }
   }
+  
+  /// Maps data received from the signal into an object
+  /// which implements the Mappable protocol and returns the result back
+  /// If the conversion fails, the signal errors.
+  public func mapObject<T: BaseMappable>(_ type: T.Type, atKeyPath keyPath: String, context: MapContext? = nil) -> Observable<T> {
+    return flatMap { response -> Observable<T> in
+      return Observable.just(try response.mapObject(T.self, atKeyPath: keyPath, context: context))
+    }
+  }
+
+  /// Maps data received from the signal into an array of objects
+  /// which implement the Mappable protocol and returns the result back
+  /// If the conversion fails, the signal errors.
+	public func mapArray<T: BaseMappable>(_ type: T.Type, atKeyPath keyPath: String, context: MapContext? = nil) -> Observable<[T]> {
+    return flatMap { response -> Observable<[T]> in
+			return Observable.just(try response.mapArray(T.self, atKeyPath: keyPath, context: context))
+    }
+  }
 }
 
 
@@ -51,6 +69,24 @@ public extension ObservableType where E == Response {
   public func mapArray<T: ImmutableMappable>(_ type: T.Type, context: MapContext? = nil) -> Observable<[T]> {
     return flatMap { response -> Observable<[T]> in
 			return Observable.just(try response.mapArray(type, context: context))
+    }
+  }
+  
+  /// Maps data received from the signal into an object
+  /// which implements the ImmutableMappable protocol and returns the result back
+  /// If the conversion fails, the signal errors.
+  public func mapObject<T: ImmutableMappable>(_ type: T.Type, atKeyPath keyPath: String, context: MapContext? = nil) -> Observable<T> {
+    return flatMap { response -> Observable<T> in
+			return Observable.just(try response.mapObject(T.self, atKeyPath: keyPath, context: context))
+    }
+  }
+
+  /// Maps data received from the signal into an array of objects
+  /// which implement the ImmutableMappable protocol and returns the result back
+  /// If the conversion fails, the signal errors.
+  public func mapArray<T: ImmutableMappable>(_ type: T.Type, atKeyPath keyPath: String, context: MapContext? = nil) -> Observable<[T]> {
+    return flatMap { response -> Observable<[T]> in
+			return Observable.just(try response.mapArray(T.self, atKeyPath: keyPath, context: context))
     }
   }
 }
