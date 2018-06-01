@@ -1,23 +1,19 @@
 PODS:
-  - Alamofire (4.7.0)
-  - Moya (11.0.1):
-    - Moya/Core (= 11.0.1)
-  - Moya-ObjectMapper (2.5.1):
-    - Moya-ObjectMapper/Core (= 2.5.1)
-  - Moya-ObjectMapper/Core (2.5.1):
-    - Moya (~> 11.0.0)
-    - ObjectMapper (~> 3.1.0)
-  - Moya-ObjectMapper/RxSwift (2.5.1):
+  - Alamofire (4.7.2)
+  - Moya (11.0.2):
+    - Moya/Core (= 11.0.2)
+  - Moya-ObjectMapper (2.6):
+    - Moya-ObjectMapper/Core (= 2.6)
+  - Moya-ObjectMapper/Core (2.6):
+    - Moya (~> 11)
+    - ObjectMapper (~> 3.2)
+  - Moya-ObjectMapper/RxSwift (2.6):
     - Moya-ObjectMapper/Core
-    - Moya/RxSwift
     - RxSwift (~> 4.1)
-  - Moya/Core (11.0.1):
+  - Moya/Core (11.0.2):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
-  - Moya/RxSwift (11.0.1):
-    - Moya/Core
-    - RxSwift (~> 4.0)
-  - ObjectMapper (3.1.0)
+  - ObjectMapper (3.2.0)
   - Result (3.2.4)
   - RxSwift (4.1.2)
 
@@ -25,28 +21,29 @@ DEPENDENCIES:
   - Moya
   - Moya-ObjectMapper (from `../`)
   - Moya-ObjectMapper/RxSwift (from `../`)
-  - ObjectMapper (from `https://github.com/Hearst-DD/ObjectMapper`)
+  - ObjectMapper
   - RxSwift
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Moya
+    - ObjectMapper
+    - Result
+    - RxSwift
 
 EXTERNAL SOURCES:
   Moya-ObjectMapper:
-    :path: ../
-  ObjectMapper:
-    :git: https://github.com/Hearst-DD/ObjectMapper
-
-CHECKOUT OPTIONS:
-  ObjectMapper:
-    :commit: 883a6f1d53e59b2b8bccf0fa49fa07d8b0a6b6e2
-    :git: https://github.com/Hearst-DD/ObjectMapper
+    :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
-  Moya: 3d594ada51a21cc02b18739ab578a1984f900c8a
-  Moya-ObjectMapper: 0611a848349536134f86e7885f6825963e33b5f6
-  ObjectMapper: 9a4b0d34a264821f26a0f431d79fd48a1f69862c
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  Moya: a725035953bc1c0eb1be505ab903984501d82440
+  Moya-ObjectMapper: e6930a3893cb607c2b048a3501b79a10a08858ae
+  ObjectMapper: 5cccd2de6f253eda859df8116a5a554d9769e859
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RxSwift: e49536837d9901277638493ea537394d4b55f570
 
-PODFILE CHECKSUM: 9299419ef67b47dd9a0ab9cd611dc44ff80199a2
+PODFILE CHECKSUM: 23430ed7af727d3d936bb13a9a7f8b06ade40fd2
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3
