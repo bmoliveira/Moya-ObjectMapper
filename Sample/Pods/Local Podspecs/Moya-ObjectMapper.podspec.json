@@ -1,12 +1,12 @@
 {
   "name": "Moya-ObjectMapper",
-  "version": "2.4.2",
+  "version": "2.7",
   "summary": "ObjectMapper bindings for Moya",
-  "description": "[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper) bindings for\n[Moya](https://github.com/Moya/Moya) for easier JSON serialization.\nIncludes [RxSwift](https://github.com/ReactiveX/RxSwift/) bindings as well.\nInstructions on how to use it are in\n[the README](https://github.com/ivanbruel/Moya-ObjectMapper).",
-  "homepage": "https://github.com/ivanbruel/Moya-ObjectMapper",
+  "description": "[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper) bindings for\n[Moya](https://github.com/Moya/Moya) for easier JSON serialization.\nIncludes [RxSwift](https://github.com/ReactiveX/RxSwift/) bindings as well.\nInstructions on how to use it are in\n[the README](https://github.com/bmoliveira/Moya-ObjectMapper).",
+  "homepage": "https://github.com/bmoliveira/Moya-ObjectMapper",
   "license": {
     "type": "MIT",
-    "file": "License"
+    "file": "LICENSE"
   },
   "authors": {
     "Ivan Bruel": "ivan.bruel@gmail.com"
@@ -19,8 +19,8 @@
     "tvos": "9.0"
   },
   "source": {
-    "git": "https://github.com/ivanbruel/Moya-ObjectMapper.git",
-    "tag": "2.4.2"
+    "git": "https://github.com/bmoliveira/Moya-ObjectMapper.git",
+    "tag": "2.7"
   },
   "default_subspecs": "Core",
   "subspecs": [
@@ -29,10 +29,10 @@
       "source_files": "Source/*.swift",
       "dependencies": {
         "Moya": [
-          "~> 10.0.0"
+          "~> 11"
         ],
         "ObjectMapper": [
-          "~> 3.0.0"
+          "~> 3.3"
         ]
       },
       "frameworks": "Foundation"
@@ -41,14 +41,11 @@
       "name": "RxSwift",
       "source_files": "Source/RxSwift/*.swift",
       "dependencies": {
-        "Moya/RxSwift": [
-
-        ],
         "Moya-ObjectMapper/Core": [
 
         ],
         "RxSwift": [
-          "~> 4.0.0"
+          "~> 4.1"
         ]
       }
     },
@@ -56,14 +53,14 @@
       "name": "ReactiveSwift",
       "source_files": "Source/ReactiveSwift/*.swift",
       "dependencies": {
-        "Moya/ReactiveSwift": [
-
-        ],
         "Moya-ObjectMapper/Core": [
 
         ],
+        "Moya/ReactiveSwift": [
+          "11"
+        ],
         "ReactiveSwift": [
-
+          "~> 3"
         ]
       }
     }

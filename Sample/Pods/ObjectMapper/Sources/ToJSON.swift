@@ -34,14 +34,14 @@ private func setValue(_ value: Any, map: Map) {
 
 private func setValue(_ value: Any, key: String, checkForNestedKeys: Bool, delimiter: String, dictionary: inout [String : Any]) {
 	if checkForNestedKeys {
-		let keyComponents = ArraySlice(key.components(separatedBy: delimiter).filter { !$0.isEmpty }.map { $0.characters })
+		let keyComponents = ArraySlice(key.components(separatedBy: delimiter).filter { !$0.isEmpty }.map { $0 })
 		setValue(value, forKeyPathComponents: keyComponents, dictionary: &dictionary)
 	} else {
 		dictionary[key] = value
 	}
 }
 
-private func setValue(_ value: Any, forKeyPathComponents components: ArraySlice<String.CharacterView.SubSequence>, dictionary: inout [String : Any]) {
+private func setValue(_ value: Any, forKeyPathComponents components: ArraySlice<String>, dictionary: inout [String : Any]) {
 	if components.isEmpty {
 		return
 	}
@@ -98,7 +98,7 @@ internal final class ToJSON {
 		if let field = field {
 			basicType(field, map: map)
 		} else if map.shouldIncludeNilValues {
-			basicType(NSNull(), map: map)  //If BasicType is nil, emil NSNull into the JSON output
+			basicType(NSNull(), map: map)  //If BasicType is nil, emit NSNull into the JSON output
 		}
 	}
 
@@ -111,6 +111,8 @@ internal final class ToJSON {
 	class func optionalObject<N: BaseMappable>(_ field: N?, map: Map) {
 		if let field = field {
 			object(field, map: map)
+		} else if map.shouldIncludeNilValues {
+			basicType(NSNull(), map: map)  //If field is nil, emit NSNull into the JSON output
 		}
 	}
 
