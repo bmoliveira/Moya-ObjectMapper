@@ -118,8 +118,6 @@ public final class Mapper<N: BaseMappable> {
 					exception = NSException(name: .init(rawValue: "ImmutableMappableError"), reason: error.localizedDescription, userInfo: nil)
 				}
 				exception.raise()
-				#else
-				NSLog("\(error)")
 				#endif
 			}
 		} else {
@@ -161,7 +159,11 @@ public final class Mapper<N: BaseMappable> {
 	/// Maps an array of JSON dictionary to an array of Mappable objects
 	public func mapArray(JSONArray: [[String: Any]]) -> [N] {
 		// map every element in JSON array to type N
+		#if swift(>=4.1)
+		let result = JSONArray.compactMap(map)
+		#else
 		let result = JSONArray.flatMap(map)
+		#endif
 		return result
 	}
 	
@@ -427,7 +429,11 @@ extension Mapper where N: Hashable {
 	/// Maps an Set of JSON dictionary to an array of Mappable objects
 	public func mapSet(JSONArray: [[String: Any]]) -> Set<N> {
 		// map every element in JSON array to type N
+		#if swift(>=4.1)
+		return Set(JSONArray.compactMap(map))
+		#else
 		return Set(JSONArray.flatMap(map))
+		#endif
 	}
 
 	///Maps a Set of Objects to a Set of JSON dictionaries [[String : Any]]

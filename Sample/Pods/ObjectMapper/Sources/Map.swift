@@ -124,14 +124,18 @@ public final class Map {
 	public func value<T>() -> T? {
 		let value = currentValue as? T
 		
-		// Swift 4.1 breaks Float casting from `NSNumber`. So Added extra checks for `Flaot` `[Float]` and `[String:Float]`
+		// Swift 4.1 breaks Float casting from `NSNumber`. So Added extra checks for `Float` `[Float]` and `[String:Float]`
 		if value == nil && T.self == Float.self {
 			if let v = currentValue as? NSNumber {
 				return v.floatValue as? T
 			}
 		} else if value == nil && T.self == [Float].self {
 			if let v = currentValue as? [Double] {
+				#if swift(>=4.1)
+				return v.compactMap{ Float($0) } as? T
+				#else
 				return v.flatMap{ Float($0) } as? T
+				#endif
 			}
 		} else if value == nil && T.self == [String:Float].self {
 			if let v = currentValue as? [String:Double] {
