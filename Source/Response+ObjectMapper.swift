@@ -76,7 +76,10 @@ public extension Response {
   /// protocol.
   /// If the conversion fails, the signal errors.
   public func mapObject<T: ImmutableMappable>(_ type: T.Type, atKeyPath keyPath: String, context: MapContext? = nil) throws -> T {
-		return try Mapper<T>(context: context).map(JSONObject: (try mapJSON() as? NSDictionary)?.value(forKeyPath: keyPath))
+    guard let object = Mapper<T>(context: context).map(JSONObject: (try mapJSON() as? NSDictionary)?.value(forKeyPath: keyPath)) else {
+      throw MoyaError.jsonMapping(self)
+    }
+    return object
   }
 
   /// Maps data received from the signal into an array of objects which implement the ImmutableMappable
