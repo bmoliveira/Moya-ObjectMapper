@@ -56,7 +56,6 @@ struct Repository: Mappable {
 
 ## 1. Without RxSwift and ReactiveSwift
 
-
 ```swift
 GitHubProvider.request(.userRepositories(username), completion: { result in
 

@@ -52,10 +52,8 @@
 		A89A1780FEB6242D2A585832 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6B914D021F0FB6B0080B851 /* Demo-RxSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo-RxSwift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6B914DE21F0FB6C0080B851 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B6B914F421F0FB830080B851 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6B914F921F0FBE50080B851 /* DemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewModel.swift; sourceTree = "<group>"; };
 		B6B914FB21F1015A0080B851 /* DemoRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoRequestable.swift; sourceTree = "<group>"; };
-		B6B9150F21F101F10080B851 /* DemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewModel.swift; sourceTree = "<group>"; };
 		B6B9151121F102010080B851 /* Rx+DemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+DemoViewModel.swift"; sourceTree = "<group>"; };
 		B6B9151421F1E31E0080B851 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B6B9151721F1E8370080B851 /* DemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewModel.swift; sourceTree = "<group>"; };
@@ -101,7 +99,6 @@
 				B6B914F821F0FB940080B851 /* Common */,
 				5EC197E21A1BB16D00F4DFD4 /* Demo */,
 				B6B914D121F0FB6B0080B851 /* Demo-RxSwift */,
-				B6B914E721F0FB820080B851 /* Demo-ReactiveSwift */,
 				5EC197E11A1BB16D00F4DFD4 /* Products */,
 				4EA28E847926FEF1338D42F3 /* Frameworks */,
 				B8D39EF1F6DCBAFA2D9AAD10 /* Pods */,
@@ -162,15 +159,6 @@
 				B6B914DE21F0FB6C0080B851 /* Info.plist */,
 			);
 			path = "Demo-RxSwift";
-			sourceTree = "<group>";
-		};
-		B6B914E721F0FB820080B851 /* Demo-ReactiveSwift */ = {
-			isa = PBXGroup;
-			children = (
-				B6B9150F21F101F10080B851 /* DemoViewModel.swift */,
-				B6B914F421F0FB830080B851 /* Info.plist */,
-			);
-			path = "Demo-ReactiveSwift";
 			sourceTree = "<group>";
 		};
 		B6B914F821F0FB940080B851 /* Common */ = {

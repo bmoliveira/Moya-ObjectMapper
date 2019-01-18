@@ -8,25 +8,16 @@ PODS:
   - Moya-ObjectMapper/Core (2.7):
     - Moya (~> 12.0)
     - ObjectMapper (~> 3.4)
-  - Moya-ObjectMapper/ReactiveSwift (2.7):
-    - Moya-ObjectMapper/Core (~> 2.7)
-    - Moya/ReactiveSwift
-    - ReactiveSwift
   - Moya-ObjectMapper/RxSwift (2.7):
     - Moya-ObjectMapper/Core (~> 2.7)
     - RxSwift (~> 4)
   - Moya/Core (12.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 4.0)
-  - Moya/ReactiveSwift (12.0.1):
-    - Moya/Core
-    - ReactiveSwift (~> 4.0)
   - Moya/RxSwift (12.0.1):
     - Moya/Core
     - RxSwift (~> 4.0)
   - ObjectMapper (3.4.2)
-  - ReactiveSwift (4.0.0):
-    - Result (~> 4.1)
   - Result (4.1.0)
   - RxAlertController (3.0.0):
     - RxSwift (~> 4.0)
@@ -43,12 +34,9 @@ PODS:
 DEPENDENCIES:
   - Moya
   - Moya-ObjectMapper (from `../`)
-  - Moya-ObjectMapper/ReactiveSwift (from `../`)
   - Moya-ObjectMapper/RxSwift (from `../`)
-  - Moya/ReactiveSwift
   - Moya/RxSwift
   - ObjectMapper
-  - ReactiveSwift (from `https://github.com/ReactiveCocoa/ReactiveSwift`)
   - RxAlertController
   - RxCocoa
   - RxDataSources
@@ -70,13 +58,6 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   Moya-ObjectMapper:
     :path: "../"
-  ReactiveSwift:
-    :git: https://github.com/ReactiveCocoa/ReactiveSwift
-
-CHECKOUT OPTIONS:
-  ReactiveSwift:
-    :commit: 38b9f2858f886235f0e8bbd161d0b2a4a9331a72
-    :git: https://github.com/ReactiveCocoa/ReactiveSwift
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
@@ -84,7 +65,6 @@ SPEC CHECKSUMS:
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
   Moya-ObjectMapper: 75a0e64d4bb6b005c3e966006ada8b95a873e280
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
-  ReactiveSwift: efdc731422239141a33765f87f512e9df57e7e81
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxAlertController: 085028503d78685237d9d8f4d8d3c5ec5f2bb031
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
@@ -92,6 +72,6 @@ SPEC CHECKSUMS:
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
 
-PODFILE CHECKSUM: 36e5d1a4f204864be24640e26e94dce6d3f914b7
+PODFILE CHECKSUM: bad88f3fd54af2f7b4e8cffdbbe8df2a30cfd986
 
 COCOAPODS: 1.6.0.beta.2

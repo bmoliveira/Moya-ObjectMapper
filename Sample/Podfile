@@ -46,10 +46,3 @@ target 'Demo-RxSwift' do
   libraries
   libraries_rx_swift
 end
-
-target 'Demo-ReactiveSwift' do
-  platform :ios, '9.0'
-  required_pods
-  libraries
-  libraries_reactive_swift
-end
