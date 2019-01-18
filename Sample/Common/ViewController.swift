@@ -1,12 +1,18 @@
 import UIKit
 
-class ViewController: UITableViewController {
+class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource {
+  @IBOutlet weak var zenButton: UIBarButtonItem!
+  @IBOutlet weak var searchButton: UIBarButtonItem!
+  @IBOutlet var tableView: UITableView!
+  
   let viewModel = DemoViewModel(networking: GitHubProvider)
   
   var repos = [Repository]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.tableView.dataSource = self
+    self.tableView.delegate = self
     initializeViewModel()
   }
   
@@ -62,11 +68,11 @@ class ViewController: UITableViewController {
   
   // MARK: - Table View
   
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return repos.count
   }
   
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
     
     let repo = repos[(indexPath as NSIndexPath).row]

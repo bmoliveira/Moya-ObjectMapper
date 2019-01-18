@@ -10,7 +10,7 @@ import Foundation
 import Moya
 import Moya_ObjectMapper
 
-class DemoViewModel: DemoRequestable {
+class DemoViewModel {
   let networking: MoyaProvider<GitHub>
   var repositoriesResponse: ((Bool, String, [Repository]?) -> Void)? = nil
   var zenResponse: ((Bool, String) -> Void)? = nil

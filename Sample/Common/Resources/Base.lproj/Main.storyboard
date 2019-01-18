@@ -36,10 +36,6 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="iag-78-iuI" id="g7D-Xm-aDY"/>
-                            <outlet property="delegate" destination="iag-78-iuI" id="VUp-HU-CZa"/>
-                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="fZ1-y1-Xxt">
                         <barButtonItem key="leftBarButtonItem" title="Zen" id="bkk-cH-CrR">
@@ -53,6 +49,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchButton" destination="ezq-hH-fx4" id="tc1-dx-fcI"/>
+                        <outlet property="tableView" destination="XqI-te-CgY" id="W0t-oP-Y4u"/>
+                        <outlet property="zenButton" destination="bkk-cH-CrR" id="Ewi-2D-glf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n3h-Zg-pHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

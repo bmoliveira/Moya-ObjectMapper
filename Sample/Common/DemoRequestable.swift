@@ -11,7 +11,4 @@ import Moya
 
 protocol DemoRequestable {
   var networking: MoyaProvider<GitHub> {get}
-  
-  func downloadRepositories(_ username: String)
-  func downloadZen()
 }
