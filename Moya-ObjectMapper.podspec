@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Moya-ObjectMapper"
-  s.version      = "2.7"
+  s.version      = "2.8"
   s.summary      = "ObjectMapper bindings for Moya"
   s.description  = <<-EOS
   [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper) bindings for
