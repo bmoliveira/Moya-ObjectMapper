@@ -10,20 +10,19 @@ import Foundation
 import Moya
 import Moya_ObjectMapper
 import ReactiveSwift
-import Result
 
 class ReactiveDemoViewModel: ReactiveExtensionsProvider {
-  private let (_reloadDataSignal, reloadDataObserver) = Signal<Void, NoError>.pipe()
-  private let (_downloadZenSignal, downloadZenObserver) = Signal<Result<String, MoyaError>, NoError>.pipe()
-  private let (_downloadRepoSignal, downloadRepoObserver) = Signal<Result<[Repository], MoyaError>, NoError>.pipe()
+  private let (_reloadDataSignal, reloadDataObserver) = Signal<Void, Never>.pipe()
+  private let (_downloadZenSignal, downloadZenObserver) = Signal<Result<String, MoyaError>, Never>.pipe()
+  private let (_downloadRepoSignal, downloadRepoObserver) = Signal<Result<[Repository], MoyaError>, Never>.pipe()
 
   private var downloadRepositoriesDisposable: Disposable?
   private var downloadZenDisposable: Disposable?
   
   let networking: Reactive<MoyaProvider<GitHub>>
-  var reloadDataSignal: Signal<Void, NoError> { return _reloadDataSignal }
-  var downloadZenSignal: Signal<Result<String, MoyaError>, NoError> { return _downloadZenSignal }
-  var downloadRepoSignal: Signal<Result<[Repository], MoyaError>, NoError> { return _downloadRepoSignal }
+  var reloadDataSignal: Signal<Void, Never> { return _reloadDataSignal }
+  var downloadZenSignal: Signal<Result<String, MoyaError>, Never> { return _downloadZenSignal }
+  var downloadRepoSignal: Signal<Result<[Repository], MoyaError>, Never> { return _downloadRepoSignal }
 
   private(set) var datasource: [Repository] = []
   
@@ -43,7 +42,11 @@ class ReactiveDemoViewModel: ReactiveExtensionsProvider {
     downloadRepositoriesDisposable?.dispose()
     downloadRepositoriesDisposable = reactive.downloadRepositories(username)
       .startWithResult { [weak self] result in
-        self?.datasource = result.value ?? []
+        if case let .success(value) = result {
+            self?.datasource = value
+        } else {
+            self?.datasource = []
+        }
         self?.reloadDataObserver.send(value: ())
         self?.downloadRepoObserver.send(value: result)
       }
