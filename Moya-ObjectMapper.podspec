@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   s.default_subspec = "Core"
 
   s.subspec "Core" do |ss|
-    ss.source_files  = "Source/*.swift"
+    ss.source_files  = "Source/Core/*.swift"
     ss.dependency "Moya", "~> 14.0.0-beta.6"
     ss.dependency "ObjectMapper", "~> 3.5.1"
     ss.framework  = "Foundation"
@@ -32,7 +32,6 @@ Pod::Spec.new do |s|
     ss.dependency "Moya-ObjectMapper/Core"
     ss.dependency "RxSwift", "~> 5"
     ss.dependency "Moya/RxSwift"
-    ss.dependency "RxSwift", "~> 5.0"
   end
 
   s.subspec "ReactiveSwift" do |ss|
