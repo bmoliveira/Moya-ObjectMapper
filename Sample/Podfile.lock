@@ -1,59 +1,73 @@
 PODS:
-  - Alamofire (4.8.1)
-  - Differentiator (3.1.0)
-  - Moya (12.0.1):
-    - Moya/Core (= 12.0.1)
-  - Moya-ObjectMapper (2.7):
-    - Moya-ObjectMapper/Core (= 2.7)
-  - Moya-ObjectMapper/Core (2.7):
-    - Moya (~> 12.0)
-    - ObjectMapper (~> 3.4)
-  - Moya-ObjectMapper/RxSwift (2.7):
+  - Alamofire (5.0.0-rc.3)
+  - Differentiator (4.0.1)
+  - Moya (14.0.0-beta.6):
+    - Moya/Core (= 14.0.0-beta.6)
+  - Moya-ObjectMapper (3.0):
+    - Moya-ObjectMapper/Core (= 3.0)
+  - Moya-ObjectMapper/Core (3.0):
+    - Moya (~> 14.0.0-beta.6)
+    - ObjectMapper (~> 3.5.1)
+  - Moya-ObjectMapper/ReactiveSwift (3.0):
+    - Moya-ObjectMapper/Core
+    - Moya/ReactiveSwift
+    - ReactiveSwift (~> 6.0)
+  - Moya-ObjectMapper/RxSwift (3.0):
     - Moya-ObjectMapper/Core
     - Moya/RxSwift
-    - RxSwift (~> 4)
-  - Moya/Core (12.0.1):
-    - Alamofire (~> 4.1)
-    - Result (~> 4.0)
-  - Moya/RxSwift (12.0.1):
+    - RxSwift (~> 5.0)
+  - Moya/Core (14.0.0-beta.6):
+    - Alamofire (= 5.0.0-rc.3)
+  - Moya/ReactiveSwift (14.0.0-beta.6):
     - Moya/Core
-    - RxSwift (~> 4.0)
-  - ObjectMapper (3.4.2)
-  - Result (4.1.0)
-  - RxAlertController (3.0.0):
-    - RxSwift (~> 4.0)
-  - RxAtomic (4.4.0)
-  - RxCocoa (4.4.0):
-    - RxSwift (~> 4.0)
-  - RxDataSources (3.1.0):
-    - Differentiator (~> 3.0)
-    - RxCocoa (~> 4.0)
-    - RxSwift (~> 4.0)
-  - RxSwift (4.4.0):
-    - RxAtomic (~> 4.4)
+    - ReactiveSwift (~> 6.0)
+  - Moya/RxSwift (14.0.0-beta.6):
+    - Moya/Core
+    - RxSwift (~> 5.0)
+  - ObjectMapper (3.5.1)
+  - ReactiveCocoa (10.1.0):
+    - ReactiveSwift (~> 6.1)
+  - ReactiveSwift (6.1.0)
+  - RxAlertController (5.0.0):
+    - RxSwift (~> 5.0)
+  - RxCocoa (5.0.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.0.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.1)
 
 DEPENDENCIES:
   - Moya
   - Moya-ObjectMapper (from `../`)
+  - Moya-ObjectMapper/ReactiveSwift (from `../`)
   - Moya-ObjectMapper/RxSwift (from `../`)
+  - Moya/ReactiveSwift
   - Moya/RxSwift
   - ObjectMapper
+  - ReactiveCocoa
+  - ReactiveSwift
   - RxAlertController
   - RxCocoa
   - RxDataSources
   - RxSwift
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - Differentiator
     - Moya
     - ObjectMapper
-    - Result
+    - ReactiveCocoa
+    - ReactiveSwift
     - RxAlertController
-    - RxAtomic
     - RxCocoa
     - RxDataSources
+    - RxRelay
     - RxSwift
 
 EXTERNAL SOURCES:
@@ -61,18 +75,19 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
-  Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
-  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
-  Moya-ObjectMapper: a85f8002093a326150b7ba72dc4cf39217401757
-  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
-  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
-  RxAlertController: 085028503d78685237d9d8f4d8d3c5ec5f2bb031
-  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
-  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
-  RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
-  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
+  Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  Moya: d4821fbcb3e784f34d2f82869e6855057a0b85d1
+  Moya-ObjectMapper: cf781507fa621e4f18bcc8f3c747cb3cd8fabea2
+  ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  ReactiveCocoa: 2f1d942d79072eded6d8c3bc7c2a641d40855a56
+  ReactiveSwift: b78c7259f8ca46368238c895ae33a6a3bf9f811c
+  RxAlertController: ef75925a2a002f0f1fd03378ddeceaa9c1c5558f
+  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
+  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
 
-PODFILE CHECKSUM: bad88f3fd54af2f7b4e8cffdbbe8df2a30cfd986
+PODFILE CHECKSUM: a54ee9026cab0878d85c2ed1207e4e7c44ad070e
 
-COCOAPODS: 1.6.0.beta.2
+COCOAPODS: 1.8.4
