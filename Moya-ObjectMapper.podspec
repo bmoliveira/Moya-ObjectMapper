@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Moya-ObjectMapper"
-  s.version      = "2.8"
+  s.version      = "3.0"
   s.summary      = "ObjectMapper bindings for Moya"
   s.description  = <<-EOS
   [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper) bindings for
@@ -13,24 +13,24 @@ Pod::Spec.new do |s|
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "Ivan Bruel" => "ivan.bruel@gmail.com" }
   s.social_media_url   = "http://twitter.com/ivanbruel"
-  s.ios.deployment_target = '8.0'
-  s.osx.deployment_target = '10.10'
+  s.ios.deployment_target = '10.0'
+  s.osx.deployment_target = '10.12'
   s.watchos.deployment_target = '3.0'
-  s.tvos.deployment_target = '9.0'
+  s.tvos.deployment_target = '10.0'
   s.source       = { :git => "https://github.com/bmoliveira/Moya-ObjectMapper.git", :tag => s.version }
   s.default_subspec = "Core"
 
   s.subspec "Core" do |ss|
     ss.source_files  = "Source/Core/*.swift"
-    ss.dependency "Moya", "~> 12.0"
-    ss.dependency "ObjectMapper", "~> 3.4"
+    ss.dependency "Moya", "~> 14.0.0-beta.6"
+    ss.dependency "ObjectMapper", "~> 3.5.1"
     ss.framework  = "Foundation"
   end
 
   s.subspec "RxSwift" do |ss|
     ss.source_files = "Source/RxSwift/*.swift"
     ss.dependency "Moya-ObjectMapper/Core"
-    ss.dependency "RxSwift", "~> 4"
+    ss.dependency "RxSwift", "~> 5"
     ss.dependency "Moya/RxSwift"
   end
 
@@ -38,6 +38,6 @@ Pod::Spec.new do |s|
     ss.source_files = "Source/ReactiveSwift/*.swift"
     ss.dependency "Moya-ObjectMapper/Core"
     ss.dependency "Moya/ReactiveSwift"
-    ss.dependency "ReactiveSwift"
+    ss.dependency "ReactiveSwift" , "~> 6.0"
   end
 end

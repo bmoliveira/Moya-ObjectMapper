@@ -19,7 +19,8 @@ end
 def libraries_reactive_swift
   pod 'Moya-ObjectMapper/ReactiveSwift', :path => "../"
   pod 'Moya/ReactiveSwift'
-  pod 'ReactiveSwift', :git => 'https://github.com/ReactiveCocoa/ReactiveSwift'
+  pod 'ReactiveCocoa'
+  pod 'ReactiveSwift'
 end
 
 def required_pods
@@ -35,14 +36,21 @@ def test_pods
 end
 
 target 'Demo' do
-  platform :ios, '9.0'
+  platform :ios, '10.0'
   required_pods
   libraries
 end
 
 target 'Demo-RxSwift' do
-  platform :ios, '9.0'
+  platform :ios, '10.0'
   required_pods
   libraries
   libraries_rx_swift
+end
+
+target 'Demo-ReactiveSwift' do
+  platform :ios, '10.0'
+  required_pods
+  libraries
+  libraries_reactive_swift
 end
