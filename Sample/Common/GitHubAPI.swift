@@ -3,17 +3,27 @@ import Moya
 
 // MARK: - Provider setup
 
-private func JSONResponseDataFormatter(_ data: Data) -> Data {
+private func JSONResponseDataFormatter(_ data: Data) -> String {
   do {
     let dataAsJSON = try JSONSerialization.jsonObject(with: data)
-    let prettyData =  try JSONSerialization.data(withJSONObject: dataAsJSON, options: .prettyPrinted)
-    return prettyData
+    let prettyData = try JSONSerialization.data(withJSONObject: dataAsJSON, options: .prettyPrinted)
+    return String(data: prettyData, encoding: .utf8) ?? ""
   } catch {
-    return data //fallback to original data if it cant be serialized
+    if JSONSerialization.isValidJSONObject(data) {
+        return String(data: data, encoding: .utf8) ?? ""
+    }
+    return ""
   }
 }
 
-let GitHubProvider = MoyaProvider<GitHub>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
+let configuration = NetworkLoggerPlugin.Configuration(
+    formatter: NetworkLoggerPlugin.Configuration.Formatter(
+        requestData: JSONResponseDataFormatter,
+        responseData: JSONResponseDataFormatter
+    ),
+    logOptions: .verbose
+)
+let GitHubProvider = MoyaProvider<GitHub>(plugins: [NetworkLoggerPlugin(configuration: configuration)])
 
 // MARK: - Provider support
 

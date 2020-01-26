@@ -10,7 +10,6 @@ import Foundation
 import Moya
 import Moya_ObjectMapper
 import ReactiveSwift
-import Result
 
 extension Reactive where Base: ReactiveDemoViewModel {
   func downloadRepositories(_ username: String) -> SignalProducer<[Repository], MoyaError> {

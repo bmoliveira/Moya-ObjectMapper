@@ -9,7 +9,6 @@
 import Moya
 import ReactiveCocoa
 import ReactiveSwift
-import Result
 import UIKit
 
 class ViewController: UIViewController {
@@ -39,8 +38,9 @@ class ViewController: UIViewController {
     }
 
     viewModel.downloadRepoSignal.observeValues { [weak self] result in
-      if result.error != nil {
-        self?.presentUsernamePrompt()
+      switch result {
+      case .success: break
+      case .failure: self?.presentUsernamePrompt()
       }
     }
 
