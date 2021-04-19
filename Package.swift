@@ -24,7 +24,8 @@ let package = Package(
             name: "Moya-ObjectMapper",
             dependencies: [
                 "Moya",
-                "ObjectMapper"],
+                "ObjectMapper"
+            ],
             path: "Source/Core",
             exclude: [
                 "Sample"
