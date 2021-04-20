@@ -3,7 +3,7 @@ import Moya
 import ObjectMapper
 
 /// Extension for processing Responses into Mappable objects through ObjectMapper
-public extension SignalProducerProtocol where Value == Moya.Response, Error == MoyaError {
+public extension SignalProducerProtocol where Value == Response, Error == MoyaError {
 
     /// Maps data received from the signal into an object which implements the Mappable protocol.
     /// If the conversion fails, the signal errors.
