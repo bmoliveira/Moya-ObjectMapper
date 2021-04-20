@@ -20,6 +20,7 @@ let package = Package(
         .package(url: "https://github.com/ReactiveCocoa/ReactiveSwift.git", .upToNextMajor(from: "6.6.0"))
     ],
     targets: [
+        
         .target(
             name: "Moya-ObjectMapper",
             dependencies: [
