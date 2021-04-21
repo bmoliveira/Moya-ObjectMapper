@@ -3,7 +3,12 @@ import UIKit
 class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource {
   @IBOutlet weak var zenButton: UIBarButtonItem!
   @IBOutlet weak var searchButton: UIBarButtonItem!
-  @IBOutlet var tableView: UITableView!
+  @IBOutlet var tableView: UITableView! {
+    didSet {
+      tableView.dataSource = self
+      tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+    }
+  }
   
   let viewModel = DemoViewModel(networking: GitHubProvider)
   
@@ -11,8 +16,6 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.tableView.dataSource = self
-    self.tableView.delegate = self
     initializeViewModel()
   }
   

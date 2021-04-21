@@ -9,6 +9,9 @@ import Foundation
 import RxSwift
 import Moya
 import ObjectMapper
+#if !COCOAPODS
+import Moya_ObjectMapper
+#endif
 
 /// Extension for processing Responses into Mappable objects through ObjectMapper
 public extension PrimitiveSequence where TraitType == SingleTrait, ElementType == Response {
