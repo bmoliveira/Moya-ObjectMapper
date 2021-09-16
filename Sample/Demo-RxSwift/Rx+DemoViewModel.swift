@@ -9,6 +9,8 @@
 import Foundation
 import Moya
 import Moya_ObjectMapper
+import Moya_RxSwift_ObjectMapper
+import RxMoya
 import RxSwift
 
 extension Reactive where Base: RxDemoViewModel {
