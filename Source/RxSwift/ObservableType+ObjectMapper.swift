@@ -9,9 +9,12 @@ import Foundation
 import RxSwift
 import Moya
 import ObjectMapper
+#if !COCOAPODS
+import Moya_ObjectMapper
+#endif
 
 /// Extension for processing Responses into Mappable objects through ObjectMapper
-public extension ObservableType where E == Response {
+public extension ObservableType where Element == Response {
 
   /// Maps data received from the signal into an object
   /// which implements the Mappable protocol and returns the result back
@@ -52,7 +55,7 @@ public extension ObservableType where E == Response {
 
 
 // MARK: - ImmutableMappable
-public extension ObservableType where E == Response {
+public extension ObservableType where Element == Response {
 
   /// Maps data received from the signal into an object
   /// which implements the ImmutableMappable protocol and returns the result back

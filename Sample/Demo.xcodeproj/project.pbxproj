@@ -3,10 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00139B9626F3820200E66859 /* Moya-ReactiveSwift-ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = 00139B9526F3820200E66859 /* Moya-ReactiveSwift-ObjectMapper */; };
+		00139B9826F3820200E66859 /* Moya-RxSwift-ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = 00139B9726F3820200E66859 /* Moya-RxSwift-ObjectMapper */; };
+		00139B9A26F3820200E66859 /* Moya-ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = 00139B9926F3820200E66859 /* Moya-ObjectMapper */; };
+		00139B9D26F3839E00E66859 /* ReactiveCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 00139B9C26F3839E00E66859 /* ReactiveCocoa */; };
+		00139BA026F384DA00E66859 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 00139B9F26F384DA00E66859 /* Moya */; };
+		00139BA226F384DA00E66859 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 00139BA126F384DA00E66859 /* ReactiveMoya */; };
+		00139BA426F384DA00E66859 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 00139BA326F384DA00E66859 /* RxMoya */; };
+		00139BA726F389D200E66859 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 00139BA626F389D200E66859 /* RxCocoa */; };
+		00139BAC26F389F800E66859 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 00139BAB26F389F800E66859 /* RxDataSources */; };
+		00139BB226F38BA900E66859 /* RxAlertController in Frameworks */ = {isa = PBXBuildFile; productRef = 00139BB126F38BA900E66859 /* RxAlertController */; };
 		00D95AE722608F7100413792 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC197E51A1BB16D00F4DFD4 /* AppDelegate.swift */; };
 		00D95AE822608F7100413792 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306F6BF61D22BCEB00F727A6 /* Repository.swift */; };
 		00D95AE922608F7100413792 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306F6BF81D22BCF400F727A6 /* Owner.swift */; };
@@ -39,9 +49,6 @@
 		B6B9151221F102040080B851 /* Rx+DemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B9151121F102010080B851 /* Rx+DemoViewModel.swift */; };
 		B6B9151521F1E31E0080B851 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B9151421F1E31E0080B851 /* ViewController.swift */; };
 		B6B9151821F1E8370080B851 /* DemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B9151721F1E8370080B851 /* DemoViewModel.swift */; };
-		E7576D0CD0E5AD547B896ED0 /* Pods_Demo_RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A232A84B98910D7EDF87CE0D /* Pods_Demo_RxSwift.framework */; };
-		EE5817B4160808C125C38F94 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89A1780FEB6242D2A585832 /* Pods_Demo.framework */; };
-		FCE52922A7D2FD20C65EDE03 /* Pods_Demo_ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D23DF288BDAB53A5B86FD7 /* Pods_Demo_ReactiveSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,7 +57,6 @@
 		00D95AFB22608F8F00413792 /* DemoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewModel.swift; sourceTree = "<group>"; };
 		00D95AFC22608F8F00413792 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00D95B032260938800413792 /* Reactive+DemoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Reactive+DemoViewModel.swift"; sourceTree = "<group>"; };
-		0D85AC75E709DB671C5F929E /* Pods-Demo-ReactiveSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo-ReactiveSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo-ReactiveSwift/Pods-Demo-ReactiveSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		306F6BF61D22BCEB00F727A6 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		306F6BF81D22BCF400F727A6 /* Owner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
 		5EC197E01A1BB16D00F4DFD4 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,11 +68,6 @@
 		5EC197F11A1BB16D00F4DFD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		5EC198071A1BB24600F4DFD4 /* GitHubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAPI.swift; sourceTree = "<group>"; };
 		635CFFB539B0C7F414CAD726 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F327BA3CDC694B5610D8F34 /* Pods-Demo-RxSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo-RxSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo-RxSwift/Pods-Demo-RxSwift.release.xcconfig"; sourceTree = "<group>"; };
-		8D4F794B10774FA272DBB388 /* Pods-Demo-ReactiveSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo-ReactiveSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo-ReactiveSwift/Pods-Demo-ReactiveSwift.release.xcconfig"; sourceTree = "<group>"; };
-		92D23DF288BDAB53A5B86FD7 /* Pods_Demo_ReactiveSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_ReactiveSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A232A84B98910D7EDF87CE0D /* Pods_Demo_RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A89A1780FEB6242D2A585832 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6B914D021F0FB6B0080B851 /* Demo-RxSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo-RxSwift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6B914DE21F0FB6C0080B851 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6B914F921F0FBE50080B851 /* DemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewModel.swift; sourceTree = "<group>"; };
@@ -74,9 +75,6 @@
 		B6B9151121F102010080B851 /* Rx+DemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+DemoViewModel.swift"; sourceTree = "<group>"; };
 		B6B9151421F1E31E0080B851 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B6B9151721F1E8370080B851 /* DemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewModel.swift; sourceTree = "<group>"; };
-		E1CBA3696FDCC977B2899DB6 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
-		F3BA32533C45EB307D6E1A17 /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
-		F79CBA55B66F9A58A18ECA9A /* Pods-Demo-RxSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo-RxSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo-RxSwift/Pods-Demo-RxSwift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +82,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCE52922A7D2FD20C65EDE03 /* Pods_Demo_ReactiveSwift.framework in Frameworks */,
+				00139B9626F3820200E66859 /* Moya-ReactiveSwift-ObjectMapper in Frameworks */,
+				00139B9D26F3839E00E66859 /* ReactiveCocoa in Frameworks */,
+				00139BA226F384DA00E66859 /* ReactiveMoya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +92,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE5817B4160808C125C38F94 /* Pods_Demo.framework in Frameworks */,
+				00139BA026F384DA00E66859 /* Moya in Frameworks */,
+				00139B9A26F3820200E66859 /* Moya-ObjectMapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +101,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7576D0CD0E5AD547B896ED0 /* Pods_Demo_RxSwift.framework in Frameworks */,
+				00139BA726F389D200E66859 /* RxCocoa in Frameworks */,
+				00139BAC26F389F800E66859 /* RxDataSources in Frameworks */,
+				00139BA426F384DA00E66859 /* RxMoya in Frameworks */,
+				00139BB226F38BA900E66859 /* RxAlertController in Frameworks */,
+				00139B9826F3820200E66859 /* Moya-RxSwift-ObjectMapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,9 +127,6 @@
 			isa = PBXGroup;
 			children = (
 				635CFFB539B0C7F414CAD726 /* Pods.framework */,
-				A89A1780FEB6242D2A585832 /* Pods_Demo.framework */,
-				92D23DF288BDAB53A5B86FD7 /* Pods_Demo_ReactiveSwift.framework */,
-				A232A84B98910D7EDF87CE0D /* Pods_Demo_RxSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -138,7 +140,6 @@
 				B6B914D121F0FB6B0080B851 /* Demo-RxSwift */,
 				5EC197E11A1BB16D00F4DFD4 /* Products */,
 				4EA28E847926FEF1338D42F3 /* Frameworks */,
-				B8D39EF1F6DCBAFA2D9AAD10 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -155,8 +156,8 @@
 		5EC197E21A1BB16D00F4DFD4 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				5EC197E31A1BB16D00F4DFD4 /* Supporting Files */,
 				B6B914F921F0FBE50080B851 /* DemoViewModel.swift */,
+				5EC197E31A1BB16D00F4DFD4 /* Supporting Files */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -172,8 +173,8 @@
 		B6B914CA21F0FA680080B851 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				306F6BF61D22BCEB00F727A6 /* Repository.swift */,
 				306F6BF81D22BCF400F727A6 /* Owner.swift */,
+				306F6BF61D22BCEB00F727A6 /* Repository.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -181,9 +182,9 @@
 		B6B914CB21F0FA7F0080B851 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5EC197EB1A1BB16D00F4DFD4 /* Main.storyboard */,
 				5EC197EE1A1BB16D00F4DFD4 /* Images.xcassets */,
 				5EC197F01A1BB16D00F4DFD4 /* LaunchScreen.xib */,
+				5EC197EB1A1BB16D00F4DFD4 /* Main.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -191,10 +192,10 @@
 		B6B914D121F0FB6B0080B851 /* Demo-RxSwift */ = {
 			isa = PBXGroup;
 			children = (
-				B6B9151721F1E8370080B851 /* DemoViewModel.swift */,
-				B6B9151421F1E31E0080B851 /* ViewController.swift */,
-				B6B9151121F102010080B851 /* Rx+DemoViewModel.swift */,
 				B6B914DE21F0FB6C0080B851 /* Info.plist */,
+				B6B9151721F1E8370080B851 /* DemoViewModel.swift */,
+				B6B9151121F102010080B851 /* Rx+DemoViewModel.swift */,
+				B6B9151421F1E31E0080B851 /* ViewController.swift */,
 			);
 			path = "Demo-RxSwift";
 			sourceTree = "<group>";
@@ -202,27 +203,14 @@
 		B6B914F821F0FB940080B851 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				5EC197E71A1BB16D00F4DFD4 /* ViewController.swift */,
-				B6B914CB21F0FA7F0080B851 /* Resources */,
-				B6B914CA21F0FA680080B851 /* Model */,
 				5EC197E51A1BB16D00F4DFD4 /* AppDelegate.swift */,
-				5EC198071A1BB24600F4DFD4 /* GitHubAPI.swift */,
 				B6B914FB21F1015A0080B851 /* DemoRequestable.swift */,
+				5EC198071A1BB24600F4DFD4 /* GitHubAPI.swift */,
+				5EC197E71A1BB16D00F4DFD4 /* ViewController.swift */,
+				B6B914CA21F0FA680080B851 /* Model */,
+				B6B914CB21F0FA7F0080B851 /* Resources */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		B8D39EF1F6DCBAFA2D9AAD10 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F3BA32533C45EB307D6E1A17 /* Pods-Demo.debug.xcconfig */,
-				E1CBA3696FDCC977B2899DB6 /* Pods-Demo.release.xcconfig */,
-				0D85AC75E709DB671C5F929E /* Pods-Demo-ReactiveSwift.debug.xcconfig */,
-				8D4F794B10774FA272DBB388 /* Pods-Demo-ReactiveSwift.release.xcconfig */,
-				F79CBA55B66F9A58A18ECA9A /* Pods-Demo-RxSwift.debug.xcconfig */,
-				6F327BA3CDC694B5610D8F34 /* Pods-Demo-RxSwift.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,17 +220,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00D95AF622608F7100413792 /* Build configuration list for PBXNativeTarget "Demo-ReactiveSwift" */;
 			buildPhases = (
-				00D95AE522608F7100413792 /* [CP] Check Pods Manifest.lock */,
 				00D95AE622608F7100413792 /* Sources */,
 				00D95AEF22608F7100413792 /* Frameworks */,
 				00D95AF122608F7100413792 /* Resources */,
-				00D95AF522608F7100413792 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Demo-ReactiveSwift";
+			packageProductDependencies = (
+				00139B9526F3820200E66859 /* Moya-ReactiveSwift-ObjectMapper */,
+				00139B9C26F3839E00E66859 /* ReactiveCocoa */,
+				00139BA126F384DA00E66859 /* ReactiveMoya */,
+			);
 			productName = "Demo-RxSwift";
 			productReference = 00D95AF922608F7100413792 /* Demo-ReactiveSwift.app */;
 			productType = "com.apple.product-type.application";
@@ -251,17 +242,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5EC198011A1BB16D00F4DFD4 /* Build configuration list for PBXNativeTarget "Demo" */;
 			buildPhases = (
-				FC722F5FBFE683EBEF64FB02 /* [CP] Check Pods Manifest.lock */,
 				5EC197DC1A1BB16D00F4DFD4 /* Sources */,
 				5EC197DD1A1BB16D00F4DFD4 /* Frameworks */,
 				5EC197DE1A1BB16D00F4DFD4 /* Resources */,
-				653ECFC7B1C9146D8B3A62CD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Demo;
+			packageProductDependencies = (
+				00139B9926F3820200E66859 /* Moya-ObjectMapper */,
+				00139B9F26F384DA00E66859 /* Moya */,
+			);
 			productName = Demo;
 			productReference = 5EC197E01A1BB16D00F4DFD4 /* Demo.app */;
 			productType = "com.apple.product-type.application";
@@ -270,17 +263,22 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6B914DF21F0FB6C0080B851 /* Build configuration list for PBXNativeTarget "Demo-RxSwift" */;
 			buildPhases = (
-				3759A0B97326E10705347171 /* [CP] Check Pods Manifest.lock */,
 				B6B914CC21F0FB6B0080B851 /* Sources */,
 				B6B914CD21F0FB6B0080B851 /* Frameworks */,
 				B6B914CE21F0FB6B0080B851 /* Resources */,
-				1B604DD3FDD9FA318B010BE1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Demo-RxSwift";
+			packageProductDependencies = (
+				00139B9726F3820200E66859 /* Moya-RxSwift-ObjectMapper */,
+				00139BA326F384DA00E66859 /* RxMoya */,
+				00139BA626F389D200E66859 /* RxCocoa */,
+				00139BAB26F389F800E66859 /* RxDataSources */,
+				00139BB126F38BA900E66859 /* RxAlertController */,
+			);
 			productName = "Demo-RxSwift";
 			productReference = B6B914D021F0FB6B0080B851 /* Demo-RxSwift.app */;
 			productType = "com.apple.product-type.application";
@@ -293,21 +291,21 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = "Ash Furrow";
 				TargetAttributes = {
 					00D95AE422608F7100413792 = {
-						DevelopmentTeam = 552H65R858;
+						DevelopmentTeam = D2AMZDF9K6;
 						ProvisioningStyle = Automatic;
 					};
 					5EC197DF1A1BB16D00F4DFD4 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 552H65R858;
+						DevelopmentTeam = D2AMZDF9K6;
 						LastSwiftMigration = 1020;
 					};
 					B6B914CF21F0FB6B0080B851 = {
 						CreatedOnToolsVersion = 10.1;
-						DevelopmentTeam = 552H65R858;
+						DevelopmentTeam = D2AMZDF9K6;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -321,6 +319,14 @@
 				Base,
 			);
 			mainGroup = 5EC197D71A1BB16D00F4DFD4;
+			packageReferences = (
+				00139B9426F3820200E66859 /* XCRemoteSwiftPackageReference "Moya-ObjectMapper" */,
+				00139B9B26F3839E00E66859 /* XCRemoteSwiftPackageReference "ReactiveCocoa" */,
+				00139B9E26F384DA00E66859 /* XCRemoteSwiftPackageReference "Moya" */,
+				00139BA526F389D200E66859 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				00139BAA26F389F800E66859 /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				00139BB026F38BA900E66859 /* XCRemoteSwiftPackageReference "RxAlertController" */,
+			);
 			productRefGroup = 5EC197E11A1BB16D00F4DFD4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -364,159 +370,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		00D95AE522608F7100413792 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Demo-ReactiveSwift-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		00D95AF522608F7100413792 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Demo-ReactiveSwift/Pods-Demo-ReactiveSwift-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya.default-ReactiveSwift/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya-ObjectMapper.default-ReactiveSwift/Moya_ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya_ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Demo-ReactiveSwift/Pods-Demo-ReactiveSwift-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1B604DD3FDD9FA318B010BE1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Demo-RxSwift/Pods-Demo-RxSwift-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya.default-RxSwift/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya-ObjectMapper.default-RxSwift/Moya_ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAlertController/RxAlertController.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
-				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya_ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlertController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Demo-RxSwift/Pods-Demo-RxSwift-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3759A0B97326E10705347171 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Demo-RxSwift-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		653ECFC7B1C9146D8B3A62CD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Demo/Pods-Demo-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya-ObjectMapper/Moya_ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya_ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Demo/Pods-Demo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FC722F5FBFE683EBEF64FB02 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Demo-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		00D95AE622608F7100413792 /* Sources */ = {
@@ -587,7 +440,6 @@
 /* Begin XCBuildConfiguration section */
 		00D95AF722608F7100413792 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D85AC75E709DB671C5F929E /* Pods-Demo-ReactiveSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -599,14 +451,17 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 552H65R858;
+				DEVELOPMENT_TEAM = D2AMZDF9K6;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "$(SRCROOT)/Demo-ReactiveSwift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Demo-ReactiveSwift";
+				PRODUCT_BUNDLE_IDENTIFIER = "p-rob.com.ashfurrow.Demo-ReactiveSwift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 5.0;
@@ -616,7 +471,6 @@
 		};
 		00D95AF822608F7100413792 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D4F794B10774FA272DBB388 /* Pods-Demo-ReactiveSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -629,13 +483,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 552H65R858;
+				DEVELOPMENT_TEAM = D2AMZDF9K6;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "$(SRCROOT)/Demo-ReactiveSwift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Demo-ReactiveSwift";
+				PRODUCT_BUNDLE_IDENTIFIER = "p-rob.com.ashfurrow.Demo-ReactiveSwift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -665,6 +522,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -689,7 +547,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -720,6 +578,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -737,24 +596,27 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		5EC198021A1BB16D00F4DFD4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3BA32533C45EB307D6E1A17 /* Pods-Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 552H65R858;
+				DEVELOPMENT_TEAM = D2AMZDF9K6;
 				INFOPLIST_FILE = Demo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ashfurrow.$(PRODUCT_NAME:rfc1034identifier)";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "p-rob.com.ashfurrow.Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -762,14 +624,16 @@
 		};
 		5EC198031A1BB16D00F4DFD4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E1CBA3696FDCC977B2899DB6 /* Pods-Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 552H65R858;
+				DEVELOPMENT_TEAM = D2AMZDF9K6;
 				INFOPLIST_FILE = Demo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ashfurrow.$(PRODUCT_NAME:rfc1034identifier)";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "p-rob.com.ashfurrow.Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -777,7 +641,6 @@
 		};
 		B6B914E021F0FB6C0080B851 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F79CBA55B66F9A58A18ECA9A /* Pods-Demo-RxSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -789,14 +652,17 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 552H65R858;
+				DEVELOPMENT_TEAM = D2AMZDF9K6;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Demo-RxSwift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Demo-RxSwift";
+				PRODUCT_BUNDLE_IDENTIFIER = "p-rob.com.ashfurrow.Demo-RxSwift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 5.0;
@@ -806,7 +672,6 @@
 		};
 		B6B914E121F0FB6C0080B851 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F327BA3CDC694B5610D8F34 /* Pods-Demo-RxSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -819,13 +684,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 552H65R858;
+				DEVELOPMENT_TEAM = D2AMZDF9K6;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Demo-RxSwift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Demo-RxSwift";
+				PRODUCT_BUNDLE_IDENTIFIER = "p-rob.com.ashfurrow.Demo-RxSwift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -872,6 +740,110 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		00139B9426F3820200E66859 /* XCRemoteSwiftPackageReference "Moya-ObjectMapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/p-rob/Moya-ObjectMapper";
+			requirement = {
+				branch = "update-moya";
+				kind = branch;
+			};
+		};
+		00139B9B26F3839E00E66859 /* XCRemoteSwiftPackageReference "ReactiveCocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveCocoa/ReactiveCocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.2.2;
+			};
+		};
+		00139B9E26F384DA00E66859 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.0;
+			};
+		};
+		00139BA526F389D200E66859 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.2.0;
+			};
+		};
+		00139BAA26F389F800E66859 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
+		00139BB026F38BA900E66859 /* XCRemoteSwiftPackageReference "RxAlertController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgeny-sureev/RxAlertController";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		00139B9526F3820200E66859 /* Moya-ReactiveSwift-ObjectMapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00139B9426F3820200E66859 /* XCRemoteSwiftPackageReference "Moya-ObjectMapper" */;
+			productName = "Moya-ReactiveSwift-ObjectMapper";
+		};
+		00139B9726F3820200E66859 /* Moya-RxSwift-ObjectMapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00139B9426F3820200E66859 /* XCRemoteSwiftPackageReference "Moya-ObjectMapper" */;
+			productName = "Moya-RxSwift-ObjectMapper";
+		};
+		00139B9926F3820200E66859 /* Moya-ObjectMapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00139B9426F3820200E66859 /* XCRemoteSwiftPackageReference "Moya-ObjectMapper" */;
+			productName = "Moya-ObjectMapper";
+		};
+		00139B9C26F3839E00E66859 /* ReactiveCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00139B9B26F3839E00E66859 /* XCRemoteSwiftPackageReference "ReactiveCocoa" */;
+			productName = ReactiveCocoa;
+		};
+		00139B9F26F384DA00E66859 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00139B9E26F384DA00E66859 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		00139BA126F384DA00E66859 /* ReactiveMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00139B9E26F384DA00E66859 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = ReactiveMoya;
+		};
+		00139BA326F384DA00E66859 /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00139B9E26F384DA00E66859 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
+		00139BA626F389D200E66859 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00139BA526F389D200E66859 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		00139BAB26F389F800E66859 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00139BAA26F389F800E66859 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
+		};
+		00139BB126F38BA900E66859 /* RxAlertController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00139BB026F38BA900E66859 /* XCRemoteSwiftPackageReference "RxAlertController" */;
+			productName = RxAlertController;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5EC197D81A1BB16D00F4DFD4 /* Project object */;
 }

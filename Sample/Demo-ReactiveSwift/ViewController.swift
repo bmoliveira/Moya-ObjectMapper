@@ -30,14 +30,14 @@ class ViewController: UIViewController {
   }
 
   fileprivate func initializeViewModel() {
-    viewModel.downloadZenSignal.observeValues { [weak self] result in
+    viewModel.downloadZenSignal.take(during: reactive.lifetime).observeValues { [weak self] result in
       switch result {
       case .success(let value): self?.showMessage(message: value)
       case .failure(let error): self?.showError(error: error)
       }
     }
 
-    viewModel.downloadRepoSignal.observeValues { [weak self] result in
+    viewModel.downloadRepoSignal.take(during: reactive.lifetime).observeValues { [weak self] result in
       switch result {
       case .success: break
       case .failure: self?.presentUsernamePrompt()
