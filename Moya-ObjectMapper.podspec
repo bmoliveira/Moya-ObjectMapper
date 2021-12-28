@@ -19,11 +19,11 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '10.0'
   s.source       = { :git => "https://github.com/bmoliveira/Moya-ObjectMapper.git", :tag => s.version }
   s.default_subspec = "Core"
-  s.swift_version = '5.0'
+  s.swift_version = '5'
 
   s.subspec "Core" do |ss|
     ss.source_files  = "Source/Core/*.swift"
-    ss.dependency "Moya", '~> 14.0.0-beta.6'
+    ss.dependency "Moya"
     ss.dependency "ObjectMapper"
     ss.framework  = "Foundation"
   end
