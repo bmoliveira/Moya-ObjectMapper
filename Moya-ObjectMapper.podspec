@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Moya-ObjectMapper"
-  s.version      = "3.0.2"
+  s.version      = "3.0.3"
   s.summary      = "ObjectMapper bindings for Moya"
   s.description  = <<-EOS
   [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper) bindings for
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "Ivan Bruel" => "ivan.bruel@gmail.com" }
   s.social_media_url   = "http://twitter.com/ivanbruel"
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '12.0'
   s.osx.deployment_target = '10.12'
   s.watchos.deployment_target = '3.0'
   s.tvos.deployment_target = '10.0'
